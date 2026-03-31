@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="template" client="site" method="upgrade">
+	<name>baseframe</name>
+	<version>1.0.0</version>
+	<creationDate>2026-03</creationDate>
+	<author>The AI Director</author>
+	<authorUrl>https://claudejoomla.com</authorUrl>
+	<description>BaseFrame — one template, any CSS framework. Clean semantic HTML with swappable CSS adapters. Built for AI-assisted development.</description>
+
+	<files>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<folder>html</folder>
+		<folder>language</folder>
+	</files>
+
+	<media destination="templates/site/baseframe" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>img</folder>
+		<folder>fonts</folder>
+	</media>
+
+	<positions>
+		<position>menu</position>
+		<position>hero</position>
+		<position>breadcrumbs</position>
+		<position>sidebar</position>
+		<position>footer-a</position>
+		<position>footer-b</position>
+		<position>footer-c</position>
+		<position>footer</position>
+		<position>debug</position>
+	</positions>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="BaseFrame">
+				<field name="framework" type="list" label="CSS Framework" default="bulma">
+					<option value="bulma">Bulma</option>
+					<option value="chota">Chota (3KB micro)</option>
+					<option value="cirrus">Cirrus (Material-ish)</option>
+					<option value="daisyui">DaisyUI</option>
+					<option value="fomantic">Fomantic UI (Semantic)</option>
+					<option value="foundation">Foundation</option>
+					<option value="halfmoon">Halfmoon (dark mode)</option>
+					<option value="mvp">MVP.css (minimal)</option>
+					<option value="nes">NES.css (8-bit pixel)</option>
+					<option value="openprops">Open Props</option>
+					<option value="pico">PicoCSS</option>
+					<option value="sakura">Sakura (cherry blossom)</option>
+					<option value="uikit">UIkit</option>
+					<option value="vanilla">Vanilla (no framework)</option>
+				</field>
+				<field name="cssSource" type="list" label="CSS Source" default="local">
+					<option value="local">Local (shipped with template)</option>
+					<option value="cdn">CDN (always latest version)</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

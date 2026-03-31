@@ -1,0 +1,460 @@
+/* ═══════════════════════════════════════════════════════════════
+   BaseFrame → UIkit Adapter
+   Clean corporate design. ZERO border-radius, slate tones, precise
+   spacing, bottom-border active nav. Like getuikit.com — editorial
+   precision, alternating section backgrounds, sharp corners.
+   All colors are explicit hex — no CSS variables that break in dark mode.
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --bf-accent: #1e87f0;
+  --bf-bg: #fff;
+  --bf-text: #333;
+  --bf-text-soft: #999;
+  --bf-border: #e5e5e5;
+  --bf-hover-bg: #f8f8f8;
+}
+body.tf {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* Header — UIkit navbar: minimal, no shadow, clean bottom border */
+.bf-header {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: none;
+}
+.bf-logo-label { color: #1e87f0; font-weight: 700; letter-spacing: -.01em; }
+.bf-logo-site { color: #333; font-weight: 500; }
+
+/* Nav — UIkit: bottom-border active state, NOT background fill */
+.bf-nav .nav-item > a,
+.bf-nav .mod-menu__toggle-sub {
+  color: #999;
+  font-size: .875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  padding: .5rem .65rem;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.bf-nav .nav-item > a:hover,
+.bf-nav .mod-menu__toggle-sub:hover {
+  color: #333;
+  background: none;
+  border-bottom-color: #e5e5e5;
+}
+.bf-nav .mod-menu__sub { border-radius: 0; }
+.bf-nav .mod-menu__sub .nav-item > a { color: #999; text-transform: none; letter-spacing: normal; }
+.bf-nav .mod-menu__sub .nav-item > a:hover { color: #1e87f0; background: #f8f8f8; }
+.bf-nav .nav-item.current > a,
+.bf-nav .nav-item.active > a {
+  color: #333;
+  font-weight: 600;
+  background: none;
+  border-bottom: none;
+}
+.bf-hamburger span { background: #333; }
+@media (max-width: 768px) {
+  .bf-nav { background: #fff; }
+  .bf-nav .nav-item > a { border-bottom: none; }
+  .bf-nav .nav-item.current > a,
+  .bf-nav .nav-item.active > a { border-bottom: none; background: #f8f8f8; }
+}
+
+/* Hero — UIkit dark section, thin weight, corporate */
+.bf-hero {
+  background: #222;
+  color: #fff;
+  padding: 5rem 0;
+}
+.bf-hero .title {
+  color: #fff;
+  font-size: 2.75rem;
+  font-weight: 300;
+  letter-spacing: -.02em;
+}
+.bf-hero .subtitle {
+  color: rgba(255,255,255,.7);
+  font-weight: 300;
+}
+
+/* Blog grid */
+.bf-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Cards — UIkit: ZERO border-radius, subtle border, fade-in feel */
+.bf-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  overflow: hidden;
+  transition: box-shadow .2s, opacity .6s ease;
+  display: flex;
+  flex-direction: column;
+  animation: uikit-fade-in .5s ease both;
+}
+.bf-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+/* UIkit fan-favorite: scroll-animation-inspired fade-in on content */
+@keyframes uikit-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.bf-blog-grid .bf-card:nth-child(2) { animation-delay: .1s; }
+.bf-blog-grid .bf-card:nth-child(3) { animation-delay: .2s; }
+.bf-blog-grid .bf-card:nth-child(4) { animation-delay: .3s; }
+.bf-module { animation: uikit-fade-in .5s ease both; }
+.bf-card-image img {
+  width: 100%; height: 200px; object-fit: cover; display: block;
+}
+.bf-card-body {
+  padding: 1.25rem 1.5rem;
+  flex: 1; display: flex; flex-direction: column; gap: .5rem;
+}
+.bf-card-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+.bf-tag {
+  display: inline-block;
+  padding: .15rem .5rem;
+  font-size: .7rem;
+  font-weight: 500;
+  background: #f8f8f8;
+  color: #999;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+}
+.bf-card-title { font-size: 1.1rem; font-weight: 600; margin: 0; }
+.bf-card-title a { color: #333; text-decoration: none; }
+.bf-card-title a:hover { color: #1e87f0; }
+.bf-card-date {
+  font-size: .75rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.bf-card-text { font-size: .9rem; flex: 1; color: #666; }
+.bf-card-readmore {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: .75rem;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #1e87f0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.bf-card-readmore:hover { text-decoration: none; color: #0f6ecd; }
+
+/* Leading */
+.bf-blog-leading { margin-bottom: 2rem; }
+.bf-blog-leading .bf-card { flex-direction: row; }
+.bf-blog-leading .bf-card-image { flex: 0 0 50%; }
+.bf-blog-leading .bf-card-image img { height: 100%; min-height: 280px; }
+.bf-blog-leading .bf-card-title { font-size: 1.5rem; }
+@media (max-width: 768px) {
+  .bf-blog-leading .bf-card { flex-direction: column; }
+  .bf-blog-leading .bf-card-image { flex: none; }
+  .bf-blog-leading .bf-card-image img { height: 200px; min-height: auto; }
+}
+
+/* Sidebar — UIkit muted background, no radius, clean lines */
+.bf-module {
+  background: #f8f8f8;
+  border-radius: 0;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.bf-module-title {
+  font-size: .7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #999;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: .5rem;
+  margin-bottom: .75rem;
+}
+.bf-sidebar .mod-articles-items { list-style: none; padding: 0; margin: 0; }
+.bf-sidebar .mod-articles-item {
+  margin: 0 !important; padding: 0 !important;
+  background: none !important; box-shadow: none !important;
+  border-radius: 0 !important;
+}
+.bf-sidebar .mod-articles-item-content { display: contents; }
+.bf-sidebar .mod-articles-title { font-size: .88rem !important; font-weight: 400 !important; margin: 0 !important; }
+.bf-sidebar .mod-articles-link {
+  display: block;
+  padding: .4rem 0;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: .9rem;
+  transition: color .15s;
+}
+.bf-sidebar .mod-articles-link:hover { color: #1e87f0; }
+.bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
+
+/* Content — alternating section backgrounds for editorial feel */
+.bf-content { color: #333; }
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 1rem;
+  letter-spacing: -.01em;
+}
+.com-content-article__body h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+  color: #333;
+}
+.com-content-article__body h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: .4rem;
+  color: #333;
+}
+.com-content-article__body hgroup { margin-bottom: 1.5rem; }
+.com-content-article__body hgroup p { color: #999; }
+
+/* Alternating section backgrounds — UIkit signature */
+.com-content-article__body section + section {
+  margin-top: 0;
+  padding-top: 2.5rem;
+  padding-bottom: .5rem;
+  border-top: none;
+}
+.com-content-article__body section:nth-child(even) {
+  background: #f8f8f8;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Grid cards — sharp corners, no radius */
+.com-content-article__body .grid > article,
+.com-content-article__body .home-grid > article {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  padding: 1.5rem;
+  transition: box-shadow .2s;
+}
+.com-content-article__body .grid > article:hover,
+.com-content-article__body .home-grid > article:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+.com-content-article__body .grid > article > header,
+.com-content-article__body .home-grid > article > header {
+  font-size: .65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #1e87f0;
+  margin-bottom: .75rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+.com-content-article__body .grid > article > h3,
+.com-content-article__body .home-grid > article > h3 {
+  margin-top: 0; color: #1e87f0; font-size: 1.5rem;
+}
+.com-content-article__body .grid > article > hgroup > h3 {
+  margin-top: 0; color: #1e87f0; font-size: 2rem; font-weight: 300;
+}
+.com-content-article__body .grid > div > h3 {
+  font-size: 2.5rem; font-weight: 300; color: #1e87f0; margin-bottom: .25rem; line-height: 1;
+}
+.com-content-article__body .grid > article ul,
+.com-content-article__body .home-grid > article ul {
+  list-style: disc; padding-left: 1.25rem; margin: .75rem 0 1rem;
+}
+.com-content-article__body .grid > article li { margin-bottom: .25rem; }
+
+/* Buttons — UIkit: no radius, uppercase, precise */
+.com-content-article__body a[role="button"] {
+  display: inline-flex;
+  padding: .5rem 1.5rem;
+  font-weight: 500;
+  font-size: .85rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  transition: all .2s;
+  background: #1e87f0;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+.com-content-article__body a[role="button"]:hover { background: #0f6ecd; }
+.com-content-article__body a[role="button"].secondary {
+  background: transparent;
+  color: #333;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+}
+.com-content-article__body a[role="button"].secondary:hover {
+  background: #f8f8f8;
+  color: #333;
+}
+
+/* Blockquote — UIkit: left border, muted bg, no radius */
+blockquote {
+  background: #f8f8f8;
+  border-left: 3px solid #1e87f0;
+  border-radius: 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #333;
+}
+blockquote footer { font-style: normal; margin-top: .75rem; background: none; padding: 0; }
+blockquote cite { font-weight: 600; color: #999; }
+
+/* FAQ — sharp corners, no radius */
+details {
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  margin-bottom: .5rem;
+  overflow: hidden;
+  background: #fff;
+  color: #333;
+}
+details summary {
+  padding: .85rem 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: .95rem;
+}
+details summary:hover { background: #f8f8f8; }
+details[open] summary {
+  border-bottom: 1px solid #e5e5e5;
+  background: #1e87f0;
+  color: #fff;
+}
+details > *:not(summary) { padding: 0 1.25rem; }
+details > p:last-child { padding-bottom: 1rem; }
+
+mark { background: #ffd; color: #333; padding: .1em .3em; border-radius: 0; }
+
+/* Tags — square, no radius */
+.tags .btn-info {
+  display: inline-block;
+  padding: .15rem .5rem;
+  font-size: .7rem;
+  font-weight: 500;
+  text-decoration: none;
+  background: #f8f8f8;
+  color: #999;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+}
+.tags .btn-info:hover { color: #1e87f0; border-color: #1e87f0; }
+
+/* Read more — text link style, no border, uppercase */
+.readmore .btn-secondary {
+  display: inline-block;
+  padding: .35rem .75rem;
+  font-size: .8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1e87f0;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  border: none;
+  border-radius: 0;
+  background: none;
+}
+.readmore .btn-secondary:hover { color: #0f6ecd; }
+.readmore .icon-chevron-right { display: none; }
+
+/* Pagination — UIkit joined style, no radius, no gap */
+.bf-pagination .pagination {
+  display: flex; gap: 0; list-style: none; padding: 0; justify-content: center;
+}
+.bf-pagination .page-link {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 36px; height: 36px; padding: 0 .75rem;
+  border: 1px solid #e5e5e5; margin-left: -1px;
+  border-radius: 0;
+  text-decoration: none; font-size: .85rem; color: #999;
+  transition: all .15s;
+}
+.bf-pagination .page-link:hover { color: #333; background: #f8f8f8; }
+.bf-pagination .active .page-link { background: #1e87f0; color: #fff; border-color: #1e87f0; }
+.bf-pagination .disabled .page-link { opacity: .3; pointer-events: none; }
+.pagination__wrapper { display: contents; }
+
+/* Contact form — no radius, precise, corporate */
+.com-contact input[type="text"],
+.com-contact input[type="email"],
+.com-contact textarea,
+.com-contact select {
+  width: 100%; padding: .5rem .75rem; font-size: .9rem;
+  border: 1px solid #e5e5e5; border-radius: 0;
+  background: #fff; color: #333; transition: border-color .2s;
+}
+.com-contact input:focus,
+.com-contact textarea:focus,
+.com-contact select:focus {
+  border-color: #1e87f0; outline: none;
+}
+.control-group { margin-bottom: 1rem; }
+.control-label label { display: block; margin-bottom: .35rem; font-weight: 500; font-size: .85rem; }
+.com-contact .btn-primary,
+.com-contact button[type="submit"] {
+  display: inline-flex; padding: .5rem 1.5rem;
+  font-weight: 500; font-size: .85rem;
+  text-transform: uppercase; letter-spacing: .02em;
+  background: #1e87f0; color: #fff;
+  border: none; border-radius: 0; cursor: pointer;
+}
+
+/* Footer — dark, matching header, corporate */
+.bf-footer {
+  background: #222;
+  color: rgba(255,255,255,.7);
+  border-top: none;
+}
+.bf-footer-bottom { color: rgba(255,255,255,.4); }
+.bf-footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+.bf-footer a:hover { color: #fff; }
+.bf-footer .bf-module-title {
+  font-size: .7rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: .06em; color: rgba(255,255,255,.4); margin-bottom: .75rem;
+}
+.bf-footer ul { list-style: none; padding: 0; }
+.bf-footer ul li { padding: .15rem 0; }
+
+/* Alerts — UIkit: left border accent, no radius */
+.alert { padding: 1rem 1.25rem; margin: 1rem 0; border-left: 3px solid; border-radius: 0; }
+.alert-info { background: #eef5ff; border-color: #1e87f0; color: #333; }
+.alert-success { background: #eefbf3; border-color: #32d296; color: #333; }
+.alert-warning { background: #fff6ee; border-color: #faa05a; color: #333; }
+.alert-danger { background: #fef4f6; border-color: #f0506e; color: #333; }
+
+/* Article image — no radius */
+.com-content-article figure.item-image { margin: 0 0 1.5rem; }
+.com-content-article figure.item-image img {
+  width: 100%; max-height: 480px; object-fit: cover; border-radius: 0;
+}
+
+/* Tag results */
+.com-tags-tag__category.list-group { list-style: none; padding: 0; }
+.com-tags-tag__category .list-group-item { padding: 0; border: none; background: none; }
+.com-tags-tag__category .list-group-item h3 a {
+  display: block; padding: .5rem 0; text-decoration: none;
+  color: #333; border-bottom: 1px solid #e5e5e5;
+}
+.com-tags-tag__category .list-group-item h3 a:hover { color: #1e87f0; }

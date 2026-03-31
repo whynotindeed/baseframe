@@ -1,0 +1,507 @@
+/* ===================================================================
+   BaseFrame -> NES.css Adapter
+   Maps tf-* semantic classes to an 8-bit pixel art aesthetic.
+   Requires: lib/nes.min.css loaded before this file.
+   =================================================================== */
+
+:root {
+  --bf-accent: #212529;
+  --bf-bg: #212529;
+  --bf-text: #e9ecef;
+  --bf-text-soft: #6c757d;
+  --bf-border: #000000;
+  --bf-hover-bg: #f7d51d;
+}
+
+/* ---- NES: show hamburger at 1024px (pixel font is wider) ---- */
+@media (max-width: 1024px) {
+  .bf-hamburger { display: flex !important; }
+  .bf-nav {
+    display: none !important;
+    position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+    padding: 1.5rem; z-index: 99; overflow-y: auto;
+    background: #212529; border: 4px solid #000;
+  }
+  .bf-nav.is-open { display: block !important; }
+  .bf-nav .mod-menu { flex-direction: column; width: 100%; }
+  .bf-nav .nav-item > a { color: #fff; padding: .75rem 1rem; font-size: .8rem; border: none; }
+  .bf-nav .nav-item > a:hover { background: #209cee; }
+}
+
+/* ---- Dark NES background for the whole page ---- */
+[data-framework="nes"] body.tf, body.tf { background: #212529 !important; color: #e9ecef !important; }
+
+/* ---- Header -------------------------------------------------------- */
+.bf-header {
+  background: #212529;
+  border-bottom: 4px solid #e76e55;
+}
+.bf-logo-label {
+  color: #e76e55;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .85rem;
+}
+.bf-logo-site {
+  color: #e9ecef !important;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .7rem;
+}
+
+.bf-nav .nav-item > a,
+.bf-nav .mod-menu__toggle-sub {
+  color: #e9ecef;
+  text-decoration: none;
+  font-size: .75rem;
+  font-family: 'Press Start 2P', monospace;
+  padding: .4rem .6rem;
+}
+.bf-nav .nav-item > a:hover,
+.bf-nav .mod-menu__toggle-sub:hover {
+  background: #f7d51d;
+  color: #000;
+}
+.bf-nav .mod-menu__sub { background: #212529; border: 4px solid #000; border-radius: 0; box-shadow: 8px 8px 0 #000; }
+.bf-nav .mod-menu__sub .nav-item > a { color: #e9ecef !important; font-family: 'Press Start 2P', monospace; font-size: .7rem; }
+.bf-nav .mod-menu__sub .nav-item > a:hover { background: #f7d51d; color: #000 !important; }
+.bf-nav .nav-item.current > a,
+.bf-nav .nav-item.active > a {
+  background: #209cee;
+  color: #fff;
+  font-weight: 700;
+}
+.bf-hamburger span { background: #e9ecef; }
+
+/* ---- Hero ---------------------------------------------------------- */
+.bf-hero {
+  background: #000000;
+  color: #fff;
+  border-bottom: 4px solid #e76e55;
+}
+.bf-hero .title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.6;
+}
+.bf-hero .subtitle {
+  color: #92cc41;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .75rem;
+  line-height: 1.8;
+}
+
+/* ---- Cards --------------------------------------------------------- */
+.bf-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+/* NES.css fan-favorite: pixel-stepped shadow pattern on cards */
+.bf-card {
+  background: #fff;
+  border: 4px solid #000000;
+  border-radius: 0;
+  box-shadow: 8px 8px 0 #000000;
+  overflow: hidden;
+  transition: background .15s;
+  display: flex;
+  flex-direction: column;
+}
+.bf-card:hover {
+  background: #fffde8;
+}
+.bf-module {
+  box-shadow: 6px 6px 0 #000000;
+}
+.com-content-article__body a[role="button"] {
+  box-shadow: 4px 4px 0 #000000;
+}
+.com-content-article__body a[role="button"]:active {
+  box-shadow: 2px 2px 0 #000000;
+  transform: translate(2px, 2px);
+}
+/* NES.css fan-favorite: pixelated rendering on images */
+.bf-card-image img {
+  width: 100%; height: 200px; object-fit: cover; display: block;
+  border-bottom: 4px solid #000000;
+  image-rendering: pixelated;
+}
+.bf-card-body {
+  padding: 1.25rem; flex: 1; display: flex; flex-direction: column;
+}
+.bf-card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .5rem; }
+.bf-tag {
+  display: inline-block; padding: .2rem .6rem; font-size: .65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .03em;
+  background: #92cc41; color: #000000;
+  border: 2px solid #000000; border-radius: 0;
+}
+.bf-card-title {
+  font-size: 1rem; font-weight: 700; margin: 0 0 .4rem;
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.5;
+}
+.bf-card-title a { color: #000000; text-decoration: none; }
+.bf-card-title a:hover { color: #e76e55; }
+.bf-card-date { font-size: .75rem; color: #6c757d; margin-bottom: .5rem; display: block; }
+.bf-card-text { font-size: .85rem; color: #000000; flex: 1; line-height: 1.6; }
+.bf-card-readmore {
+  display: inline-block; margin-top: auto; padding-top: .75rem;
+  font-size: .8rem; font-weight: 700; color: #209cee;
+  text-decoration: none; border-top: 4px solid #000000;
+}
+.bf-card-readmore:hover { color: #e76e55; text-decoration: underline; }
+
+/* Leading card */
+.bf-blog-leading { margin-bottom: 2rem; }
+.bf-blog-leading .bf-card { flex-direction: row; }
+.bf-blog-leading .bf-card-image { flex: 0 0 50%; }
+.bf-blog-leading .bf-card-image img { height: 100%; min-height: 280px; border-bottom: none; border-right: 4px solid #000000; }
+.bf-blog-leading .bf-card-title { font-size: 1.2rem; }
+@media (max-width: 768px) {
+  .bf-blog-leading .bf-card { flex-direction: column; }
+  .bf-blog-leading .bf-card-image { flex: none; }
+  .bf-blog-leading .bf-card-image img { height: 200px; min-height: auto; border-right: none; border-bottom: 4px solid #000000; }
+}
+
+/* ---- Sidebar ------------------------------------------------------- */
+.bf-module {
+  background: #fff;
+  border: 4px solid #000000;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.bf-module-title {
+  font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-family: 'Press Start 2P', monospace;
+  color: #e76e55; border-bottom: 4px solid #000000;
+  padding-bottom: .5rem; margin-bottom: .75rem;
+}
+
+.bf-sidebar .mod-articles-items { list-style: none; padding: 0; margin: 0; }
+.bf-sidebar .mod-articles-item {
+  margin: 0 !important; padding: 0 !important;
+  background: none !important; box-shadow: none !important; border-radius: 0 !important;
+}
+.bf-sidebar .mod-articles-item-content { display: contents; }
+.bf-sidebar .mod-articles-title { font-size: .85rem !important; font-weight: 400 !important; margin: 0 !important; }
+.bf-sidebar .mod-articles-link {
+  display: block; padding: .45rem .5rem; text-decoration: none;
+  color: #000000; transition: all .15s;
+}
+.bf-sidebar .mod-articles-link:hover { background: #f7d51d; color: #000000; }
+
+.bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
+
+/* ---- Content — light text on dark bg, dark text inside white cards ---- */
+body.tf, .bf-content { color: #e9ecef !important; }
+body.tf p, body.tf li, body.tf small, body.tf span, body.tf time, body.tf a { color: #e9ecef; }
+/* White-interior elements get dark text */
+.bf-card, .bf-card *, .bf-card-body, .bf-card-body * { color: #000 !important; }
+.bf-card-title a { color: #000 !important; }
+.bf-card-title a:hover { color: #e76e55 !important; }
+.bf-card-readmore { color: #209cee !important; }
+.bf-card-date { color: #6c757d !important; }
+.bf-tag { color: #000 !important; }
+/* Sidebar modules — white bg, dark text */
+.bf-module, .bf-module * { color: #000 !important; }
+.bf-module-title { color: #e76e55 !important; }
+.bf-sidebar .mod-articles-link { color: #000 !important; }
+/* Blockquote — light bg, dark text */
+blockquote, blockquote * { color: #000 !important; }
+blockquote cite { color: #e76e55 !important; }
+/* Details/FAQ — white bg, dark text */
+details, details * { color: #000 !important; }
+details[open] summary, details[open] summary * { color: #fff !important; }
+/* Table — white bg, dark text */
+td, td * { color: #000 !important; }
+th, th * { color: #fff !important; }
+/* Footer — dark bg, light text */
+.bf-footer, .bf-footer * { color: rgba(255,255,255,.7) !important; }
+.bf-footer a { color: #92cc41 !important; }
+.bf-main { padding-top: 4rem; }
+
+.page-header h1 {
+  font-size: 1.5rem; font-weight: 700; line-height: 1.8;
+  color: #fff !important; margin-bottom: 1.5rem; padding-top: 1rem;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.com-content-article__body h2 {
+  font-size: 1.25rem; font-weight: 700; margin-bottom: .75rem; color: #fff !important;
+  font-family: 'Press Start 2P', monospace; line-height: 1.6;
+}
+.com-content-article__body h3 {
+  font-size: 1rem; font-weight: 700; margin-bottom: .5rem; color: #209cee !important;
+  font-family: 'Press Start 2P', monospace; line-height: 1.6;
+}
+.com-content-article__body hgroup { margin-bottom: 1.5rem; padding-top: .5rem; }
+.com-content-article__body hgroup p { color: #92cc41 !important; }
+.com-content-article__body section + section {
+  margin-top: 2.5rem; padding-top: 2rem; border-top: 4px solid #e76e55;
+}
+.com-content-article__body .grid > article,
+.com-content-article__body .home-grid > article {
+  background: #fff; color: #000 !important; border-radius: 0;
+  border: 4px solid #000; box-shadow: 8px 8px 0 #000;
+  padding: 1.5rem; transition: background .15s;
+}
+.com-content-article__body .grid > article *,
+.com-content-article__body .home-grid > article * { color: #000 !important; }
+.com-content-article__body .grid > article > h3,
+.com-content-article__body .home-grid > article > h3 { color: #209cee !important; }
+.com-content-article__body .grid > article > header,
+.com-content-article__body .home-grid > article > header { color: #e76e55 !important; }
+.com-content-article__body .grid > article:hover,
+.com-content-article__body .home-grid > article:hover {
+  background: #fffde8;
+}
+.com-content-article__body .grid > article ul,
+.com-content-article__body .home-grid > article ul {
+  list-style: disc; padding-left: 1.25rem; margin: .75rem 0 1rem;
+}
+.com-content-article__body .grid > article li,
+.com-content-article__body .home-grid > article li {
+  margin-bottom: .25rem;
+}
+.com-content-article__body .grid > article > header,
+.com-content-article__body .home-grid > article > header {
+  font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-family: 'Press Start 2P', monospace;
+  color: #e76e55; margin-bottom: .75rem; padding-bottom: .5rem;
+  border-bottom: 4px solid #000000;
+}
+.com-content-article__body .grid > article > h3,
+.com-content-article__body .home-grid > article > h3 {
+  margin-top: 0; color: #209cee; font-size: 1.2rem;
+}
+.com-content-article__body .grid > article > hgroup > h3,
+.com-content-article__body .home-grid > article > hgroup > h3 {
+  margin-top: 0; color: #209cee; font-size: 1.5rem; font-weight: 700;
+}
+.com-content-article__body .grid > div > h3 {
+  font-size: 1.5rem; font-weight: 700; color: #e76e55; margin-bottom: .25rem;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Button-like links */
+.com-content-article__body a[role="button"] {
+  display: inline-flex; padding: .65rem 1.5rem; font-weight: 700; font-size: .85rem;
+  text-decoration: none; border-radius: 0; transition: all .15s;
+  background: #e76e55; color: #fff; border: 4px solid #000000;
+}
+.com-content-article__body a[role="button"]:hover {
+  background: #f7d51d; color: #000000;
+}
+.com-content-article__body a[role="button"].secondary {
+  background: #fff; color: #000000;
+}
+
+/* Blockquote */
+blockquote {
+  background: #fffde8; border-left: 4px solid #f7d51d;
+  border-radius: 0;
+  padding: 1.5rem 2rem; margin: 1.5rem 0; font-style: normal;
+  border: 4px solid #000000; border-left: 8px solid #f7d51d;
+}
+blockquote footer { font-style: normal; margin-top: .75rem; background: none; padding: 0; }
+blockquote cite { font-weight: 700; color: #e76e55; }
+
+/* FAQ accordion */
+details {
+  border: 4px solid #000000; border-radius: 0;
+  margin-bottom: .75rem; overflow: hidden; background: #fff; color: #000000;
+}
+details summary {
+  padding: 1rem 1.25rem; font-weight: 700; cursor: pointer; color: #000000;
+}
+details summary:hover { background: #f7d51d; }
+details[open] summary {
+  border-bottom: 4px solid #000000; background: #209cee; color: #fff;
+}
+details > *:not(summary) { padding: .75rem 1.25rem 0; }
+details > p:last-child { padding-bottom: 1rem; }
+
+/* Mark */
+mark { background: #f7d51d; color: #000000; padding: .1em .3em; border-radius: 0; }
+
+/* Code */
+code {
+  background: #e9ecef; color: #e76e55; padding: .15em .4em;
+  border: 2px solid #000000; border-radius: 0;
+  font-family: 'Press Start 2P', monospace; font-size: .7em;
+}
+
+/* Table — NES game menu style */
+table {
+  width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem;
+  border: 4px solid #000;
+}
+th, td {
+  padding: .75rem 1rem; text-align: left;
+  border: 4px solid #000000;
+}
+th {
+  background: #209cee; color: #fff; font-weight: 700;
+  font-family: 'Press Start 2P', monospace; font-size: .7rem;
+}
+td { background: #fff; }
+tr:nth-child(even) td { background: #f8f9fa; }
+
+/* Tags (Joomla output) */
+.tags .btn-info {
+  display: inline-block; padding: .25rem .65rem; font-size: .65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .03em; text-decoration: none;
+  background: #92cc41; color: #000000;
+  border: 2px solid #000000; border-radius: 0;
+}
+.tags .btn-info:hover { background: #f7d51d; color: #000000; }
+
+/* Read more */
+.readmore .btn-secondary {
+  display: inline-block; padding: .4rem .8rem; font-size: .8rem; font-weight: 700;
+  text-decoration: none; color: #209cee; border: 4px solid #000000;
+  border-radius: 0; background: #fff;
+}
+.readmore .btn-secondary:hover { background: #209cee; color: #fff; }
+.readmore .icon-chevron-right { display: none; }
+
+/* Pagination */
+.bf-pagination .pagination { display: flex; gap: .25rem; list-style: none; padding: 0; justify-content: center; }
+.bf-pagination .page-link {
+  display: flex; align-items: center; justify-content: center; min-width: 36px; height: 36px;
+  padding: 0 .75rem; border: 4px solid #000000; border-radius: 0;
+  text-decoration: none; font-size: .8rem; color: #000000; transition: all .15s;
+  font-weight: 700; background: #fff;
+}
+.bf-pagination .page-link:hover { background: #f7d51d; }
+.bf-pagination .active .page-link { background: #e76e55; color: #fff; }
+.bf-pagination .disabled .page-link { opacity: .3; pointer-events: none; }
+.pagination__wrapper { display: contents; }
+
+/* Contact form */
+.com-contact input[type="text"], .com-contact input[type="email"],
+.com-contact textarea, .com-contact select {
+  width: 100%; padding: .625rem .75rem; font-size: 1rem;
+  border: 4px solid #000000; border-radius: 0;
+  background: #fff; color: #000000; transition: border-color .15s;
+}
+.com-contact input:focus, .com-contact textarea:focus, .com-contact select:focus {
+  border-color: #209cee; outline: none;
+}
+.control-group { margin-bottom: 1rem; }
+.control-label label { display: block; margin-bottom: .4rem; font-weight: 700; font-size: .9rem; }
+.com-contact .btn-primary, .com-contact button[type="submit"] {
+  display: inline-flex; padding: .65rem 1.5rem; font-weight: 700; font-size: .9rem;
+  background: #92cc41; color: #000000; border: 4px solid #000000;
+  border-radius: 0; cursor: pointer; transition: all .15s;
+}
+.com-contact .btn-primary:hover, .com-contact button[type="submit"]:hover {
+  background: #f7d51d;
+}
+
+/* Footer */
+.bf-footer {
+  background: #000000; border-top: 4px solid #e76e55; color: #fff;
+}
+.bf-footer-bottom { color: rgba(255,255,255,.6); }
+.bf-footer a { color: #92cc41; text-decoration: none; }
+.bf-footer a:hover { color: #f7d51d; }
+.bf-footer .bf-module-title {
+  font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-family: 'Press Start 2P', monospace;
+  color: #e76e55; margin-bottom: .75rem;
+}
+.bf-footer ul { list-style: none; padding: 0; }
+.bf-footer ul li { padding: .15rem 0; }
+.bf-footer ul a { font-size: .85rem; }
+
+/* Alerts */
+.alert { padding: 1.25rem 1.5rem; border: 4px solid #000000; border-radius: 0; margin: 1rem 0; }
+.alert-info { background: #d4e9ff; color: #000000; }
+.alert-success { background: #d4edda; color: #000000; }
+.alert-warning { background: #fffde8; color: #000000; }
+.alert-danger { background: #ffdde1; color: #000000; }
+
+/* Article image */
+.com-content-article figure.item-image { margin: 0 0 1.5rem; }
+.com-content-article figure.item-image img {
+  width: 100%; max-height: 480px; object-fit: cover; border-radius: 0;
+  border: 4px solid #000000;
+}
+
+/* Tag results */
+.com-tags-tag__category.list-group { list-style: none; padding: 0; }
+.com-tags-tag__category .list-group-item { padding: 0; border: none; background: none; }
+.com-tags-tag__category .list-group-item h3 a {
+  display: block; padding: .65rem .75rem; text-decoration: none;
+  border: 2px solid transparent; transition: all .15s;
+}
+.com-tags-tag__category .list-group-item h3 a:hover {
+  background: #f7d51d; border: 2px solid #000000;
+}
+
+/* ─── Kunena Forum dark mode overrides ─────────────────────── */
+#kunena .kfrontend {
+  background: #2a2a2a !important;
+  border: 4px solid #e9ecef !important;
+}
+#kunena .card-header,
+#kunena h1.card-header,
+#kunena .card-body,
+#kunena .table,
+#kunena .table td,
+#kunena .table th {
+  color: #e9ecef !important;
+  background-color: transparent !important;
+}
+#kunena .kfrontend .table td { border-bottom-color: #444 !important; }
+#kunena .card-header { border-bottom-color: #444 !important; }
+#kunena .card-header a { color: #e9ecef !important; }
+#kunena .card-header small { color: #999 !important; }
+#kunena a { color: #92cc41 !important; }
+#kunena .category h3 a { color: #e9ecef !important; }
+#kunena .category h3 a:hover { color: #92cc41 !important; }
+#kunena .header-desc { color: #999 !important; }
+#kunena .bg-faded { background: rgba(255,255,255,.05) !important; color: #ccc !important; }
+#kunena .topictitle { color: #e9ecef !important; }
+#kunena .started, #kunena .replies, #kunena .views, #kunena .datepost,
+#kunena .lastpostby, #kunena .ktopic-category { color: #999 !important; }
+#kunena .kwho-user { color: #92cc41 !important; }
+#kunena .text-muted { color: #999 !important; }
+#kunena > nav.navbar {
+  background: #2a2a2a !important;
+  border: 4px solid #e9ecef !important;
+}
+#kunena .btn-outline-primary,
+#kunena .btn-outline-success,
+#kunena .btn-outline-secondary {
+  color: #e9ecef !important;
+  border-color: #e9ecef !important;
+}
+#kunena .btn-light { background: #333 !important; color: #e9ecef !important; border-color: #e9ecef !important; }
+#kunena .dropdown-menu {
+  background: #2a2a2a !important;
+  border: 4px solid #e9ecef !important;
+}
+#kunena .dropdown-menu .form-control {
+  background: #333 !important;
+  color: #e9ecef !important;
+  border: 4px solid #e9ecef !important;
+}
+#kunena .profilebox li { color: #999 !important; }
+#kunena .profilebox .badge { background: #333 !important; border: 2px solid #e9ecef !important; }
+#kunena .topic-item-messages .col-md-2 { border-color: #e9ecef !important; }
+#kunena .topic-item-messages .row.message { border-bottom-color: #444 !important; }
+#kunena .bbcode_code { background: #1a1a1a !important; border: 4px solid #e9ecef !important; }
+#kunena .bbcode_code_head { background: #222 !important; color: #999 !important; }
+#kunena .bbcode_code_body { color: #92cc41 !important; }
+#kunena .mykmsg-header { background: rgba(255,255,255,.03) !important; color: #999 !important; }
+#kunena .pagination .page-item.active .page-link { background: #e76e55 !important; border-color: #e76e55 !important; color: #fff !important; }
+#kunena .pagination .page-link { color: #e9ecef !important; border-color: #e9ecef !important; }
+#kunena + div a { color: #999 !important; }
+#kunena #kstats li, #kunena #kwho li { color: #ccc !important; }
+#kunena #kstats strong { color: #92cc41 !important; }

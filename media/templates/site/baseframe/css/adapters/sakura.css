@@ -1,0 +1,343 @@
+/* ===================================================================
+   BaseFrame -> Sakura Adapter
+   Maps tf-* semantic classes to cherry blossom classless minimalism.
+   Requires: lib/sakura.min.css loaded before this file.
+   =================================================================== */
+
+/* ---- Header -------------------------------------------------------- */
+.bf-header {
+  background: #fff;
+  border-bottom: 1px solid #d4e5e7;
+}
+.bf-logo-label { color: #1d7484; font-weight: 700; }
+.bf-logo-site { color: #4a4a4a; }
+
+.bf-nav .nav-item > a,
+.bf-nav .mod-menu__toggle-sub {
+  color: #222; text-decoration: none; transition: color .2s;
+}
+.bf-nav .nav-item > a:hover,
+.bf-nav .mod-menu__toggle-sub:hover {
+  color: #1d7484;
+}
+.bf-nav .mod-menu__sub { border-color: #d4e5e7; border-radius: 4px; }
+.bf-nav .mod-menu__sub .nav-item > a { color: #222; }
+.bf-nav .mod-menu__sub .nav-item > a:hover { background: #e0f2f1; color: #1d7484; }
+.bf-nav .nav-item.current > a,
+.bf-nav .nav-item.active > a {
+  color: #1d7484; font-weight: 600;
+  border-bottom: 2px solid #1d7484;
+}
+.bf-hamburger span { background: #4a4a4a; }
+
+@media (max-width: 768px) {
+  .bf-nav { background: #f9f9f9; }
+}
+
+/* ---- Hero ---------------------------------------------------------- */
+.bf-hero {
+  background: linear-gradient(135deg, #1d7484, #144f5a);
+  color: #fff;
+}
+.bf-hero .title { color: #fff; font-size: 2.5rem; font-weight: 700; }
+.bf-hero .subtitle { color: rgba(255,255,255,.85); }
+
+/* ---- Cards --------------------------------------------------------- */
+.bf-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.bf-card {
+  background: #f9f9f9;
+  border: 1px solid #d4e5e7;
+  border-radius: 4px;
+  box-shadow: none;
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+  display: flex;
+  flex-direction: column;
+}
+.bf-card:hover {
+  border-color: #144f5a;
+  box-shadow: 0 2px 8px rgba(29,116,132,.1);
+}
+.bf-card-image img {
+  width: 100%; height: 200px; object-fit: cover; display: block;
+}
+.bf-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.bf-card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .5rem; }
+.bf-tag {
+  display: inline-block; padding: .2rem .6rem; font-size: .7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .03em;
+  background: #e0f2f1; color: #1d7484;
+  border-radius: 9999px;
+}
+.bf-card-title { font-size: 1.1rem; font-weight: 600; margin: 0 0 .4rem; }
+.bf-card-title a { color: #4a4a4a; text-decoration: none; }
+.bf-card-title a:hover { color: #1d7484; }
+.bf-card-date { font-size: .8rem; color: #6b8e8e; margin-bottom: .5rem; display: block; }
+.bf-card-text { font-size: .9rem; color: #222; flex: 1; line-height: 1.8; }
+.bf-card-text p { margin-bottom: .5rem; }
+.bf-card-body p { margin-bottom: .5rem; }
+.bf-card-readmore {
+  display: inline-block; margin-top: auto; padding-top: .75rem;
+  font-size: .85rem; font-weight: 600; color: #1d7484;
+  text-decoration: none; border-top: 1px solid #d4e5e7;
+}
+.bf-card-readmore:hover { text-decoration: underline; }
+
+/* Override Sakura's a:hover { border-bottom: 2px solid } on UI links */
+.bf-card a:hover,
+.bf-card-title a:hover,
+.bf-card-readmore:hover,
+.bf-card-image:hover,
+.bf-sidebar a:hover,
+.bf-nav a:hover,
+.bf-nav .mod-menu__toggle-sub:hover,
+.bf-footer a:hover,
+.bf-logo:hover { border-bottom: none; }
+
+/* Leading card */
+.bf-blog-leading { margin-bottom: 2rem; }
+.bf-blog-leading .bf-card { flex-direction: row; }
+.bf-blog-leading .bf-card-image { flex: 0 0 50%; }
+.bf-blog-leading .bf-card-image img { height: 100%; min-height: 280px; }
+.bf-blog-leading .bf-card-title { font-size: 1.5rem; }
+@media (max-width: 768px) {
+  .bf-blog-leading .bf-card { flex-direction: column; }
+  .bf-blog-leading .bf-card-image { flex: none; }
+  .bf-blog-leading .bf-card-image img { height: 200px; min-height: auto; }
+}
+
+/* ---- Sidebar ------------------------------------------------------- */
+.bf-module {
+  background: #f9f9f9;
+  border: 1px solid #d4e5e7;
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.bf-module-title {
+  font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: #6b8e8e; border-bottom: 2px solid #d4e5e7;
+  padding-bottom: .5rem; margin-bottom: .75rem;
+}
+
+.bf-sidebar .mod-articles-items { list-style: none; padding: 0; margin: 0; }
+.bf-sidebar .mod-articles-item {
+  margin: 0 !important; padding: 0 !important;
+  background: none !important; box-shadow: none !important; border-radius: 0 !important;
+}
+.bf-sidebar .mod-articles-item-content { display: contents; }
+.bf-sidebar .mod-articles-title { font-size: .88rem !important; font-weight: 400 !important; margin: 0 !important; }
+.bf-sidebar .mod-articles-link {
+  display: block; padding: .45rem .5rem; text-decoration: none;
+  color: #222; border-radius: 4px; transition: all .15s;
+}
+.bf-sidebar .mod-articles-link:hover { background: #e0f2f1; color: #1d7484; }
+
+.bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
+
+/* ---- Sakura lib overrides — classless frameworks love constraining body */
+html { font-size: 100% !important; }
+body.tf {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #222;
+  line-height: 1.618;
+  font-size: 1rem !important;
+  background: #f9f9f9;
+}
+
+/* ---- Sakura lib p margin is 2.5rem — way too much, tame it */
+p { margin-bottom: 1rem; }
+
+/* ---- Content — Sakura fan-favorite: golden ratio line-height (1.618) */
+.bf-content { color: #222; line-height: 1.618; }
+.com-content-article__body { font-size: 1.05rem; letter-spacing: .01em; }
+.bf-card-text { line-height: 1.618; }
+
+.page-header h1 {
+  font-size: 2.5rem; font-weight: 700; line-height: 1.2;
+  color: #4a4a4a; margin-bottom: 1rem;
+}
+
+.com-content-article__body h2 { font-size: 2rem; font-weight: 700; margin-bottom: .5rem; color: #4a4a4a; }
+.com-content-article__body h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: .4rem; color: #4a4a4a; }
+.com-content-article__body hgroup { margin-bottom: 1.5rem; }
+.com-content-article__body hgroup p { color: #6b8e8e; }
+.com-content-article__body section + section {
+  margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #d4e5e7;
+}
+.com-content-article__body .grid > article,
+.com-content-article__body .home-grid > article {
+  background: #f9f9f9; color: #222; border-radius: 4px;
+  border: 1px solid #d4e5e7; box-shadow: none;
+  padding: 1.5rem; transition: border-color .2s;
+}
+.com-content-article__body .grid > article:hover,
+.com-content-article__body .home-grid > article:hover {
+  border-color: #144f5a;
+}
+.com-content-article__body .grid > article ul,
+.com-content-article__body .home-grid > article ul {
+  list-style: disc; padding-left: 1.25rem; margin: .75rem 0 1rem;
+}
+.com-content-article__body .grid > article li,
+.com-content-article__body .home-grid > article li {
+  margin-bottom: .25rem;
+}
+.com-content-article__body .grid > article > header,
+.com-content-article__body .home-grid > article > header {
+  font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: #1d7484; margin-bottom: .75rem; padding-bottom: .5rem;
+  border-bottom: 2px solid #e0f2f1;
+}
+.com-content-article__body .grid > article > h3,
+.com-content-article__body .home-grid > article > h3 {
+  margin-top: 0; color: #1d7484; font-size: 1.5rem;
+}
+.com-content-article__body .grid > article > hgroup > h3,
+.com-content-article__body .home-grid > article > hgroup > h3 {
+  margin-top: 0; color: #1d7484; font-size: 2rem; font-weight: 700;
+}
+.com-content-article__body .grid > div > h3 {
+  font-size: 2rem; font-weight: 700; color: #1d7484; margin-bottom: .25rem;
+}
+
+/* Button-like links */
+.com-content-article__body a[role="button"] {
+  display: inline-flex; padding: .65rem 1.5rem; font-weight: 600; font-size: .9rem;
+  text-decoration: none; border-radius: 4px; transition: all .2s;
+  background: #1d7484; color: #fff; border: none;
+}
+.com-content-article__body a[role="button"]:hover {
+  background: #144f5a;
+}
+.com-content-article__body a[role="button"].secondary {
+  background: transparent; color: #1d7484; border: 1px solid #1d7484;
+}
+
+/* Blockquote */
+blockquote {
+  background: #f9f9f9; border-left: 3px solid #144f5a;
+  border-radius: 0 4px 4px 0;
+  padding: 1.5rem 2rem; margin: 1.5rem 0; font-style: italic;
+}
+blockquote footer { font-style: normal; margin-top: .75rem; background: none; padding: 0; }
+blockquote cite { font-weight: 600; color: #4a4a4a; }
+
+/* FAQ accordion */
+details {
+  border: 1px solid #d4e5e7; border-radius: 4px;
+  margin-bottom: .75rem; overflow: hidden; background: #fff; color: #222;
+}
+details summary { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; color: #4a4a4a; }
+details summary:hover { background: #f9f9f9; }
+details[open] summary { border-bottom: 1px solid #d4e5e7; background: #1d7484; color: #fff; }
+details > *:not(summary) { padding: 0 1.25rem; }
+details > p:last-child { padding-bottom: 1rem; }
+
+/* Mark */
+mark { background: #e0f2f1; color: #1d7484; padding: .1em .3em; border-radius: 4px; }
+
+/* Code */
+code {
+  background: #f9f9f9; color: #4a4a4a; padding: .15em .4em;
+  border-radius: 4px; font-size: .88em;
+}
+
+/* Table */
+table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid #d4e5e7; }
+th { background: #f9f9f9; color: #4a4a4a; font-weight: 600; }
+
+/* Tags (Joomla output) */
+.tags .btn-info {
+  display: inline-block; padding: .25rem .65rem; font-size: .7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .03em; text-decoration: none;
+  background: #e0f2f1; color: #1d7484;
+  border-radius: 9999px; border: none;
+}
+.tags .btn-info:hover { background: #1d7484; color: #fff; }
+
+/* Read more */
+.readmore .btn-secondary {
+  display: inline-block; padding: .4rem .8rem; font-size: .8rem; font-weight: 600;
+  text-decoration: none; color: #1d7484; border: 1px solid #1d7484;
+  border-radius: 4px;
+}
+.readmore .btn-secondary:hover { background: #1d7484; color: #fff; }
+.readmore .icon-chevron-right { display: none; }
+
+/* Pagination */
+.bf-pagination .pagination { display: flex; gap: .25rem; list-style: none; padding: 0; justify-content: center; }
+.bf-pagination .page-link {
+  display: flex; align-items: center; justify-content: center; min-width: 36px; height: 36px;
+  padding: 0 .75rem; border: 1px solid #d4e5e7; border-radius: 9999px;
+  text-decoration: none; font-size: .85rem; color: #222; transition: all .15s;
+}
+.bf-pagination .page-link:hover { border-color: #1d7484; color: #1d7484; }
+.bf-pagination .active .page-link { background: #1d7484; color: #fff; border-color: #1d7484; }
+.bf-pagination .disabled .page-link { opacity: .3; pointer-events: none; }
+.pagination__wrapper { display: contents; }
+
+/* Contact form */
+.com-contact input[type="text"], .com-contact input[type="email"],
+.com-contact textarea, .com-contact select {
+  width: 100%; padding: .625rem .75rem; font-size: 1rem;
+  border: 1px solid #d4e5e7; border-radius: 4px;
+  background: #fff; color: #222; transition: border-color .15s;
+}
+.com-contact input:focus, .com-contact textarea:focus, .com-contact select:focus {
+  border-color: #1d7484; outline: none;
+  box-shadow: 0 0 0 .125em rgba(29,116,132,.2);
+}
+.control-group { margin-bottom: 1rem; }
+.control-label label { display: block; margin-bottom: .4rem; font-weight: 600; font-size: .9rem; }
+.com-contact .btn-primary, .com-contact button[type="submit"] {
+  display: inline-flex; padding: .65rem 1.5rem; font-weight: 600; font-size: .9rem;
+  background: #1d7484; color: #fff; border: none;
+  border-radius: 4px; cursor: pointer; transition: all .2s;
+}
+.com-contact .btn-primary:hover, .com-contact button[type="submit"]:hover {
+  background: #144f5a;
+}
+
+/* Footer */
+.bf-footer { background: #f9f9f9; border-top: 1px solid #d4e5e7; }
+.bf-footer-bottom { color: #6b8e8e; }
+.bf-footer a { color: #4a4a4a; text-decoration: none; }
+.bf-footer a:hover { color: #1d7484; }
+.bf-footer .bf-module-title {
+  font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: #6b8e8e; margin-bottom: .75rem;
+}
+.bf-footer ul { list-style: none; padding: 0; }
+.bf-footer ul li { padding: .15rem 0; }
+.bf-footer ul a { font-size: .9rem; }
+
+/* Alerts */
+.alert { padding: 1.25rem 1.5rem; border-radius: 4px; margin: 1rem 0; }
+.alert-info { background: #e0f2f1; color: #4a4a4a; }
+.alert-success { background: #e6f7e6; color: #257953; }
+.alert-warning { background: #fdf6e6; color: #946c00; }
+.alert-danger { background: #fce4ec; color: #a42d82; }
+
+/* Article image */
+.com-content-article figure.item-image { margin: 0 0 1.5rem; }
+.com-content-article figure.item-image img { width: 100%; max-height: 480px; object-fit: cover; border-radius: 4px; }
+
+/* Tag results */
+.com-tags-tag__category.list-group { list-style: none; padding: 0; }
+.com-tags-tag__category .list-group-item { padding: 0; border: none; background: none; }
+.com-tags-tag__category .list-group-item h3 a {
+  display: block; padding: .65rem .75rem; text-decoration: none;
+  border-radius: 4px; transition: all .15s;
+}
+.com-tags-tag__category .list-group-item h3 a:hover {
+  background: #e0f2f1; color: #1d7484;
+}

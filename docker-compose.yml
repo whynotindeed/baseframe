@@ -1,0 +1,37 @@
+name: baseframe-dev
+
+services:
+  joomla-app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - joomla-db
+    ports:
+      - "8094:80"
+    environment:
+      JOOMLA_DB_HOST: joomla-db:3306
+      JOOMLA_DB_USER: joomla
+      JOOMLA_DB_PASSWORD: joomla_local_pass
+      JOOMLA_DB_NAME: joomla
+      JOOMLA_INSTALLATION_DISABLE_LOCALHOST_CHECK: 1
+    volumes:
+      - ./joomla:/var/www/html
+    networks:
+      - tf-net
+
+  joomla-db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass_local
+      MARIADB_DATABASE: joomla
+      MARIADB_USER: joomla
+      MARIADB_PASSWORD: joomla_local_pass
+    volumes:
+      - ./db-data:/var/lib/mysql
+    networks:
+      - tf-net
+
+networks:
+  tf-net:
+    driver: bridge

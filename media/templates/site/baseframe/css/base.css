@@ -1,0 +1,427 @@
+/* ═══════════════════════════════════════════════════════════════
+   BaseFrame — Base CSS
+   Framework-agnostic structural styles. Every CSS adapter
+   builds on top of this. These classes use the tf- prefix
+   and handle layout, not aesthetics.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ─── Sticky footer — flex column on body ───────────────────── */
+body.tf {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.bf-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.bf-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .bf-layout { grid-template-columns: 1fr; }
+}
+
+/* ─── Skip link ─────────────────────────────────────────────── */
+.bf-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: .5rem 1rem;
+}
+.bf-skip:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.bf-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.bf-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.bf-logo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+.bf-logo-label {
+  font-weight: 700;
+}
+.bf-logo-site {
+  font-weight: 600;
+}
+.bf-nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ─── Joomla mod_menu → BaseFrame nav ───────────────────────── */
+.bf-nav .mod-menu {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.bf-nav .nav-item > a {
+  display: flex;
+  align-items: center;
+  padding: .5rem .75rem;
+  font-size: .9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .15s;
+}
+
+/* ─── Hamburger ─────────────────────────────────────────────── */
+.bf-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .5rem;
+}
+.bf-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  transition: all .2s;
+}
+
+/* Joomla mod_menu dropdown — "More" heading with toggle button */
+.bf-nav .nav-item { position: relative; }
+
+/* Parent item with dropdown — ensure no extra space */
+.bf-nav .nav-item.deeper.parent {
+  display: flex;
+  align-items: center;
+}
+
+/* Style the toggle button to match nav links exactly */
+.bf-nav .mod-menu__toggle-sub {
+  display: flex;
+  align-items: center;
+  /* Match .bf-nav .nav-item > a padding/font — adapters override both */
+  padding: .5rem .75rem;
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  transition: all .15s;
+}
+.bf-nav .mod-menu__toggle-sub:hover { opacity: .8; }
+/* Hide Joomla's auto-added chevron — we use ▾ in the menu title instead */
+.bf-nav .mod-menu__toggle-sub .icon-chevron-down { display: none; }
+
+/* Dropdown submenu */
+.bf-nav .mod-menu__sub {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bf-bg, #fff);
+  border: 1px solid #e5e5e5;
+  border-radius: .375rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  min-width: 180px;
+  padding: .5rem 0;
+  z-index: 60;
+  list-style: none;
+  margin: .25rem 0 0;
+}
+.bf-nav .mod-menu__sub[aria-hidden="true"] { display: none; }
+.bf-nav .mod-menu__sub[aria-hidden="false"] { display: block; }
+.bf-nav .mod-menu__sub .nav-item > a {
+  display: block;
+  padding: .5rem 1rem;
+  font-size: .85rem;
+  white-space: nowrap;
+}
+
+/* Dark theme dropdown bg — handled per-adapter now */
+
+@media (max-width: 1024px) {
+  .bf-hamburger { display: flex; }
+  .bf-nav {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem;
+    z-index: 99;
+    overflow-y: auto;
+  }
+  .bf-nav.is-open { display: block; }
+  .bf-nav .mod-menu { flex-direction: column; width: 100%; }
+  .bf-nav .nav-item { display: block; width: 100%; }
+  .bf-nav .nav-item > a { display: block; padding: .75rem 1rem; font-size: 1rem; width: 100%; }
+  .bf-nav .mod-menu__toggle-sub { display: block; width: 100%; text-align: left; padding: .75rem 1rem; font-size: 1rem; }
+  .bf-nav .mod-menu__sub { position: static; box-shadow: none; border: none; padding-left: 1rem; min-width: auto; }
+  .bf-nav .mod-menu__sub[aria-hidden="true"] { display: none; }
+  .bf-nav .mod-menu__sub[aria-hidden="false"] { display: block; }
+  .bf-nav .mod-menu__sub .nav-item > a { display: block; padding: .5rem 1rem; font-size: .95rem; white-space: normal; }
+  .bf-nav .nav-item.deeper.parent { display: block; }
+}
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.bf-hero {
+  padding: 4rem 0;
+}
+
+/* ─── Main ──────────────────────────────────────────────────── */
+.bf-main {
+  padding: 3rem 0;
+  flex: 1;
+}
+
+/* ─── Footer ────────────────────────────────────────────────── */
+.bf-footer {
+  padding: 3rem 0 2rem;
+}
+.bf-footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 768px) {
+  .bf-footer-cols { grid-template-columns: 1fr; }
+}
+.bf-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  font-size: .85rem;
+}
+
+/* ─── Joomla internals ──────────────────────────────────────── */
+.visually-hidden,
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  position: absolute !important; width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important; overflow: hidden !important;
+  clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important;
+}
+
+/* Bootstrap remnants Joomla outputs */
+.collapse:not(.show) { display: none; }
+.list-inline { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding-left: 0; }
+.btn-close {
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23333'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em no-repeat;
+  border: 0; width: 1em; height: 1em; padding: .25em; cursor: pointer; opacity: .5;
+}
+
+/* Pagination icons */
+.icon-angle-double-left::before  { content: '\AB'; }
+.icon-angle-left::before         { content: '\2039'; }
+.icon-angle-right::before        { content: '\203A'; }
+.icon-angle-double-right::before { content: '\BB'; }
+.icon-chevron-left::before       { content: '\2039'; }
+.icon-chevron-right::before      { content: '\203A'; }
+
+/* Page title */
+.page-header h1 {
+  font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
+}
+
+/* Article body headings — safety net if adapter doesn't set them */
+.com-content-article__body h2 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 .5rem; }
+.com-content-article__body h3 { font-size: 1.25rem; font-weight: 600; margin: 1rem 0 .4rem; }
+.com-content-article__body p { margin-bottom: 1rem; }
+.com-content-article__body section + section { margin-top: 2rem; padding-top: 1.5rem; }
+
+/* Article image */
+.com-content-article figure.item-image { margin: 0 0 1.5rem; }
+.com-content-article figure.item-image img {
+  width: 100%; max-height: 480px; object-fit: cover; border-radius: .5rem;
+}
+
+/* Article info */
+.article-info { display: flex; flex-wrap: wrap; gap: .5rem; font-size: .85rem; }
+.article-info-term { display: none; }
+.article-info dd { margin: 0; }
+
+/* Page navigation (prev/next) — hidden, causes cross-content links in demos */
+.pagenavigation { display: none; }
+
+/* Contact form cleanup — hide Joomla cruft */
+.form-horizontal { display: block; }
+.form-horizontal .controls { margin-left: 0; }
+.com-contact button[type="submit"] { margin-top: .75rem; }
+.com-contact .page-header { display: none; }
+.com-contact > h2,
+.com-contact__container > h2 { display: none; }
+.com-contact .field-spacer { display: none; }
+.com-contact__info { display: none; }
+.com-contact__container { display: none; }
+.com-contact legend { display: none; }
+.com-contact fieldset { border: none !important; padding: 0 !important; margin: 0 !important; }
+.com-contact textarea { font-family: inherit !important; }
+
+/* ─── Pagination ────────────────────────────────────────────── */
+.bf-pagination { margin-top: 2rem; }
+.pagination__wrapper { display: contents; }
+
+/* ─── Content grids (from universal seed HTML) ──────────────── */
+.com-content-article__body .grid,
+.com-content-article__body .home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* ─── Responsive safeguards ──────────────────────────────────── */
+/* Prevent horizontal overflow */
+html { overflow-x: hidden; }
+img, video, iframe { max-width: 100%; height: auto; }
+
+/* Stack buttons on mobile */
+@media (max-width: 480px) {
+  .com-content-article__body .grid:has(a[role="button"]) {
+    grid-template-columns: 1fr;
+  }
+  .com-content-article__body a[role="button"] {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Blog grid — ensure single column on very small screens */
+@media (max-width: 360px) {
+  .bf-blog-grid { grid-template-columns: 1fr !important; }
+  .com-content-article__body .grid,
+  .com-content-article__body .home-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ─── Tables ─────────────────────────────────────────────────── */
+.com-content-article__body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: .9rem;
+}
+.com-content-article__body th,
+.com-content-article__body td {
+  padding: .65rem .85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--bf-border, #e5e5e5);
+}
+.com-content-article__body th {
+  font-weight: 600;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.com-content-article__body thead th {
+  border-bottom-width: 2px;
+}
+
+/* Lists in articles */
+.com-content-article__body ul,
+.com-content-article__body ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+.com-content-article__body li { margin-bottom: .35rem; }
+
+/* Images in grid cards */
+.com-content-article__body .grid > article > img,
+.com-content-article__body .home-grid > article > img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: inherit;
+  margin-bottom: .75rem;
+}
+
+/* Code inline */
+.com-content-article__body code {
+  font-family: 'SF Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: .85em;
+  padding: .15em .4em;
+  border-radius: .25rem;
+  background: var(--bf-code-bg, #f5f5f5);
+}
+
+/* FAQ details — answer text needs top padding */
+details > *:not(summary):first-of-type { padding-top: .75rem; }
+
+/* Component-only view */
+.bf-component-inner { padding: 2rem 1.5rem; }
+
+/* ─── Back to top button ─────────────────────────────────────── */
+.bf-back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bf-accent, #333);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility .3s, transform .3s;
+  z-index: 40;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.bf-back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.bf-back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+/* Clickable cards */
+.bf-card-clickable { cursor: pointer; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bf-bg, #f5f5f5); }
+::-webkit-scrollbar-thumb { background: var(--bf-accent, #666); border-radius: 4px; }
+html { scrollbar-color: var(--bf-accent, #666) var(--bf-bg, #f5f5f5); scrollbar-width: thin; }
