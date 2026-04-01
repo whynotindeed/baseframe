@@ -1,18 +1,29 @@
 /* ===================================================================
    BaseFrame -> Halfmoon Adapter
-   Maps tf-* semantic classes to a modern dark-mode-first aesthetic.
+   Maps bf-* semantic classes to a modern dark-mode-first aesthetic.
    Requires: lib/halfmoon.min.css loaded before this file.
    =================================================================== */
 
 /* Halfmoon uses html { font-size: 62.5% } (10px base) which breaks all rem values.
    Fix: reset to 100% and let body text use explicit sizes. */
 html { font-size: 100% !important; }
+/* Halfmoon utility classes use rem values designed for 62.5% base — fix the broken ones */
+.w-100 { width: 100% !important; }
+.w-50 { width: 50% !important; }
+.w-25 { width: 25% !important; }
+.w-75 { width: 75% !important; }
 :root {
   --base-font-size: 1rem;
   --base-line-height: 1.6;
   --button-height: auto;
   --button-line-height: 1.5;
   --input-height: auto;
+  --bf-accent: #1890ff;
+  --bf-bg: #1a1d21;
+  --bf-text: #e2e8f0;
+  --bf-text-soft: #6c757d;
+  --bf-border: #3a3d41;
+  --bf-hover-bg: rgba(24,144,255,.1);
 }
 
 /* ---- Header -------------------------------------------------------- */
@@ -143,7 +154,7 @@ html { font-size: 100% !important; }
 .bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
 
 /* ---- Content ------------------------------------------------------- */
-body.tf { color: #e2e8f0; background: #25282c; }
+body.bf { color: #e2e8f0; background: #1a1d21; }
 .bf-content { color: #e2e8f0; }
 
 .page-header h1 {
@@ -237,14 +248,20 @@ mark { background: rgba(24,144,255,.2); color: #b0b7c3; padding: .1em .3em; bord
 
 /* Code */
 code {
-  background: #25282c; color: #40a9ff; padding: .15em .4em;
+  background: #1e2126 !important; color: #40a9ff; padding: .15em .4em;
   border-radius: .25rem; font-size: .88em; border: 1px solid #3a3d41;
 }
+pre code { background: transparent !important; border: none !important; padding: 0 !important; }
+pre { background: #1e2126; border: 1px solid #3a3d41; border-radius: .375rem; padding: 1rem; overflow-x: auto; }
+
+/* Phoca Gallery dark mode */
+.pg-item-box, .pg-category-box { border-color: #3a3d41 !important; }
+.pg-item-box-info, .pg-category-box-info { color: #e2e8f0; }
 
 /* Table */
 table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
 th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid #3a3d41; }
-th { background: #25282c; color: #b0b7c3; font-weight: 600; }
+th { background: #1e2126; color: #b0b7c3; font-weight: 600; }
 td { color: #e2e8f0; }
 tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 
@@ -258,6 +275,39 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 .tags .btn-info:hover { background: #1890ff; color: #fff; }
 
 /* Read more */
+/* Password toggle — Halfmoon's yellow .btn-secondary is too loud for a utility button */
+.input-password-toggle.btn-secondary {
+  background: transparent !important;
+  color: #6c757d !important;
+  border-color: var(--bf-border, #3a3d41) !important;
+  box-shadow: none !important;
+}
+/* Input group icon height fix — Halfmoon breaks stretch alignment */
+.input-group-text, .input-group .input-password-toggle {
+  height: auto !important;
+  align-self: stretch !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.input-group-text { color: #1890ff !important; background: rgba(24,144,255,.1) !important; }
+.bf-sidebar .input-password-toggle, .input-password-toggle { color: #6c757d !important; }
+.input-password-toggle:hover { color: #e2e8f0 !important; }
+.form-check-input {
+  background-color: #2a2d32 !important;
+  border-color: #3a3d41 !important;
+  width: 1.1em !important;
+  height: 1.1em !important;
+  appearance: none !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-radius: .25rem !important;
+}
+.form-check-input:checked { background-color: #1890ff !important; border-color: #1890ff !important; }
+.input-password-toggle.btn-secondary:hover {
+  background: rgba(255,255,255,.1) !important;
+  color: var(--bf-text, #e2e8f0) !important;
+}
+
 .readmore .btn-secondary {
   display: inline-block; padding: .4rem .8rem; font-size: .8rem; font-weight: 600;
   text-decoration: none; color: #1890ff; border: 1px solid #1890ff;
@@ -283,12 +333,12 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 .com-contact textarea, .com-contact select {
   width: 100%; padding: .625rem .75rem; font-size: 1rem;
   border: 1px solid #3a3d41; border-radius: .4rem;
-  background: #25282c; color: #e2e8f0; transition: border-color .15s;
+  background: #1e2126; color: #e2e8f0; transition: border-color .15s;
 }
 .com-contact input:focus, .com-contact textarea:focus, .com-contact select:focus {
   border-color: #1890ff; outline: none;
   box-shadow: 0 0 0 .125em rgba(24,144,255,.25);
-  background: #25282c !important; color: #e2e8f0 !important;
+  background: #1e2126 !important; color: #e2e8f0 !important;
 }
 .control-group { margin-bottom: 1rem; }
 .control-label label { display: block; margin-bottom: .4rem; font-weight: 600; font-size: .9rem; color: #e2e8f0; }
@@ -302,7 +352,7 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 }
 
 /* Footer */
-.bf-footer { background: #25282c; border-top: 1px solid #3a3d41; color: #b0b7c3; }
+.bf-footer { background: #191c20; border-top: 1px solid #3a3d41; color: #b0b7c3; }
 .bf-footer-bottom { color: #475569; }
 .bf-footer a { color: #b0b7c3; text-decoration: none; }
 .bf-footer a:hover { color: #b0b7c3; }
@@ -335,3 +385,93 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 .com-tags-tag__category .list-group-item h3 a:hover {
   background: rgba(24,144,255,.1); color: #b0b7c3;
 }
+
+/* ─── Kunena Forum dark mode overrides ─────────────────────── */
+#kunena .kfrontend {
+  background: #1e2126 !important;
+  border-color: #3a3d41 !important;
+}
+#kunena .card-header,
+#kunena h1.card-header,
+#kunena .card-body,
+#kunena .table,
+#kunena .table td,
+#kunena .table th {
+  color: #e2e8f0 !important;
+  background-color: transparent !important;
+}
+#kunena .kfrontend .table td {
+  border-bottom-color: #3a3d41 !important;
+}
+#kunena .card-header { border-bottom-color: #3a3d41 !important; }
+#kunena .card-header a { color: #e2e8f0 !important; }
+#kunena .card-header small { color: #6c757d !important; }
+#kunena a { color: #1890ff !important; }
+#kunena .category h3 a { color: #e2e8f0 !important; }
+#kunena .category h3 a:hover { color: #1890ff !important; }
+#kunena .header-desc { color: #6c757d !important; }
+#kunena .bg-faded { background: rgba(255,255,255,.05) !important; color: #b0b7c3 !important; }
+#kunena .topictitle { color: #e2e8f0 !important; }
+#kunena .started, #kunena .replies, #kunena .views, #kunena .datepost,
+#kunena .lastpostby, #kunena .ktopic-category { color: #6c757d !important; }
+#kunena .kwho-user { color: #1890ff !important; }
+#kunena .text-muted { color: #6c757d !important; }
+#kunena > nav.navbar {
+  background: #1e2126 !important;
+  border-color: #3a3d41 !important;
+}
+#kunena .btn-outline-primary,
+#kunena .btn-outline-success,
+#kunena .btn-outline-secondary {
+  color: #e2e8f0 !important;
+  border-color: #3a3d41 !important;
+}
+#kunena .btn-light { background: #2a2d32 !important; color: #e2e8f0 !important; border-color: #3a3d41 !important; }
+/* Fix Halfmoon's visibility:hidden on dropdown-menu — Bootstrap uses display:none/.show instead */
+.dropdown-menu { visibility: visible !important; display: none; }
+.dropdown-menu.show { display: block !important; }
+#kunena .dropdown-menu {
+  background: #1e2126 !important;
+  border-color: #3a3d41 !important;
+}
+#kunena .dropdown-menu .form-control {
+  background: #2a2d32 !important;
+  color: #e2e8f0 !important;
+  border-color: #3a3d41 !important;
+}
+#kunena .profilebox li { color: #6c757d !important; }
+#kunena .profilebox .badge { background: #2a2d32 !important; }
+/* Dark badges — light bg looks wrong on dark theme */
+.badge.bg-info, .badge.bg-secondary { background: rgba(24,144,255,.15) !important; color: #1890ff !important; border: 1px solid rgba(24,144,255,.3); }
+.com-content-categories__item { border-bottom-color: #3a3d41 !important; }
+#kunena .topic-item-messages .col-md-2 { border-color: #3a3d41 !important; }
+#kunena .topic-item-messages .row.message { border-bottom-color: #3a3d41 !important; }
+/* Halfmoon's .content and li margin overrides kill Kunena profile sidebar */
+#kunena .profile-expand .content { margin: 0 !important; }
+#kunena .profilebox li, #kunena .profile-expand li { margin-bottom: 0 !important; }
+#kunena .topic-starter { border-color: #3a3d41 !important; }
+
+/* AcyMailing dark mode */
+#acym_wrapper input, #acym_wrapper select, #acym_wrapper textarea {
+  background: #1e2126 !important; color: #e2e8f0 !important;
+  border-color: #3a3d41 !important;
+}
+#acym_wrapper a, #acym_wrapper div, #acym_wrapper h1, #acym_wrapper h2, #acym_wrapper p, #acym_wrapper span {
+  color: #e2e8f0 !important;
+}
+#acym_wrapper .pagination_border_left, #acym_wrapper .pagination_border_right {
+  border-color: #3a3d41 !important;
+}
+#acym_wrapper .acym__front__archive__newsletter_sending-date { color: #6c757d !important; }
+#kunena .bbcode_code { background: #2a2d32 !important; border-color: #3a3d41 !important; }
+#kunena .bbcode_code_head { background: #252830 !important; color: #6c757d !important; }
+#kunena .bbcode_code_body { color: #e2e8f0 !important; }
+#kunena .mykmsg-header { background: rgba(255,255,255,.03) !important; color: #6c757d !important; }
+#kunena .pagination .page-item.active .page-link { background: #1890ff !important; border-color: #1890ff !important; }
+#kunena .pagination .page-link { color: #e2e8f0 !important; border-color: #3a3d41 !important; height: auto !important; padding: .375rem .75rem !important; background: #2a2d32 !important; }
+#kunena .pagination .page-item.active .page-link { background: #1890ff !important; }
+#kunena .pagination .page-item.disabled .page-link { background: transparent !important; opacity: .4; }
+#kunena + div a { color: #6c757d !important; }
+/* Kunena stats/who's online */
+#kunena #kstats li, #kunena #kwho li { color: #b0b7c3 !important; }
+#kunena #kstats strong { color: #1890ff !important; }

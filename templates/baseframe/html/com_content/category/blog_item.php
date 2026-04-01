@@ -45,12 +45,7 @@ $pubDate = $item->publish_up ?? $item->created ?? '';
         <?php endif; ?>
 
         <div class="bf-card-text" itemprop="articleBody">
-            <?php
-            $intro = $item->introtext;
-            $pos = strpos($intro, '<hr id="system-readmore"');
-            if ($pos !== false) { $intro = substr($intro, 0, $pos); }
-            echo $intro;
-            ?>
+            <?php echo $item->introtext; ?>
         </div>
 
         <a href="<?php echo $link; ?>" class="bf-card-readmore">Read More</a>

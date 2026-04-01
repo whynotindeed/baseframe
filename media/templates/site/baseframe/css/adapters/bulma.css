@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    BaseFrame → Bulma Adapter
-   Maps tf-* semantic classes to Bulma's visual system.
+   Maps bf-* semantic classes to Bulma's visual system.
    Requires: lib/bulma.min.css loaded before this file.
    ═══════════════════════════════════════════════════════════════ */
 
@@ -147,7 +147,7 @@
 .bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
 
 /* ─── Content — text color and headings ─────────────────────── */
-body.tf { color: #4a4a4a; }
+body.bf { color: #4a4a4a; }
 .bf-content { color: #4a4a4a; }
 
 /* Page title */

@@ -27,7 +27,10 @@ $hasSidebar = $this->countModules('sidebar');
 $hasHero    = $this->countModules('hero');
 
 // ─── Framework config ──────────────────────────────────────────
-$framework = (string) $this->params->get('framework', 'bulma');
+// Allow URL override via ?fw= parameter for demo switching
+$fwOverride = $input->getCmd('fw', '');
+$framework  = (string) $this->params->get('framework', 'bulma');
+
 
 $frameworks = [
     'bulma' => [
@@ -158,6 +161,10 @@ $frameworks = [
     ],
 ];
 
+// Apply URL override if valid
+if ($fwOverride && isset($frameworks[$fwOverride])) {
+    $framework = $fwOverride;
+}
 $fw = $frameworks[$framework] ?? $frameworks['bulma'];
 $themeColor = $fw['color'];
 $fwLabel = $fw['label'];
@@ -172,8 +179,8 @@ if ($fw['lib'] || $fw['cdn']) {
     $libUrl = ($cssSource === 'cdn' && !empty($fw['cdn'])) ? $fw['cdn'] : $mediaBase . '/css/' . $fw['lib'];
     if ($libUrl) $this->addStyleSheet($libUrl);
 }
-$this->addStyleSheet($mediaBase . '/css/base.css?v=2');
-$this->addStyleSheet($mediaBase . '/css/' . $fw['css'] . '?v=2');
+$this->addStyleSheet($mediaBase . '/css/base.css?v=4');
+$this->addStyleSheet($mediaBase . '/css/' . $fw['css'] . '?v=3');
 $this->addStyleSheet($mediaBase . '/css/custom.css?v=2');
 $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
 ?>
@@ -186,13 +193,13 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
 </head>
-<body class="tf <?php echo $isHome ? 'bf-home' : ''; ?> <?php echo htmlspecialchars($option, ENT_QUOTES, 'UTF-8'); ?> view-<?php echo htmlspecialchars($view, ENT_QUOTES, 'UTF-8'); ?><?php echo $framework === 'halfmoon' ? ' dark-mode' : ''; ?>">
+<body class="bf <?php echo $isHome ? 'bf-home' : ''; ?> <?php echo htmlspecialchars($option, ENT_QUOTES, 'UTF-8'); ?> view-<?php echo htmlspecialchars($view, ENT_QUOTES, 'UTF-8'); ?><?php echo $framework === 'halfmoon' ? ' dark-mode' : ''; ?>">
 
     <a href="#bf-main" class="bf-skip">Skip to content</a>
 
     <!-- ─── Header ──────────────────────────────────────────── -->
     <header class="bf-header" id="bf-header">
-        <div class="bf-container tf-header-inner">
+        <div class="bf-container bf-header-inner">
             <a class="bf-logo" href="/">
                 <?php if ($fwLabel !== 'Vanilla'): ?>
                 <span class="bf-logo-label"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></span>
@@ -224,6 +231,10 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
         <div class="bf-container">
             <jdoc:include type="message" />
 
+            <?php if ($this->countModules('breadcrumbs')): ?>
+            <jdoc:include type="modules" name="breadcrumbs" style="none" />
+            <?php endif; ?>
+
             <?php if ($hasSidebar): ?>
             <div class="bf-layout">
                 <div class="bf-content">
@@ -240,6 +251,15 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
             <?php endif; ?>
         </div>
     </main>
+
+    <!-- ─── Framework bar ───────────────────────────────────── -->
+    <?php if ($this->countModules('footer')): ?>
+    <section class="bf-framework-section">
+        <div class="bf-container">
+            <jdoc:include type="modules" name="footer" style="none" />
+        </div>
+    </section>
+    <?php endif; ?>
 
     <!-- ─── Footer ──────────────────────────────────────────── -->
     <footer class="bf-footer">
@@ -259,9 +279,8 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
             <?php endif; ?>
             <div class="bf-footer-bottom">
                 <p>&copy; <?php echo date('Y'); ?> <?php echo $siteName; ?></p>
-                <p>Powered by <a href="https://www.joomla.org" target="_blank">Joomla</a>, <?php if ($fwUrl): ?><a href="<?php echo htmlspecialchars($fwUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></a><?php else: ?><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?><?php endif; ?> &amp; <a href="https://theaidirector.win" target="_blank">BaseFrame</a></p>
+                <p>Powered by <a href="https://www.joomla.org" target="_blank">Joomla</a>, <?php if ($fwUrl): ?><a href="<?php echo htmlspecialchars($fwUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></a><?php else: ?><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?><?php endif; ?> &amp; <a href="https://github.com/whynotindeed/baseframe" target="_blank">BaseFrame</a></p>
             </div>
-            <jdoc:include type="modules" name="footer" style="none" />
         </div>
     </footer>
 

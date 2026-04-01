@@ -1,6 +1,6 @@
 /* ===================================================================
    BaseFrame -> PicoCSS Adapter
-   Maps tf-* semantic classes to Pico's elegant classless aesthetic.
+   Maps bf-* semantic classes to Pico's elegant classless aesthetic.
    Pico is a classless framework — it styles semantic HTML directly.
    This adapter lets Pico's defaults shine through while providing
    BaseFrame structural overrides for layout elements.
@@ -18,7 +18,7 @@
 
 /* ---- Pico global overrides — classless framework constrains body ---- */
 /* Pico sets container max-width on body. We need full-width for BaseFrame layout. */
-body.tf {
+body.bf {
   max-width: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -28,12 +28,12 @@ body.tf {
 
 /* Pico styles header, nav, main, section, footer, article directly.
    Override only the conflicting properties for BaseFrame structure. */
-.tf header { margin-bottom: 0; padding: 0; }
-.tf nav { margin-bottom: 0; justify-content: flex-end; }
-.tf article { margin: 0; padding: 0; }
-.tf section { margin: 0; padding: 0; }
-.tf footer { margin: 0; padding: 0; }
-.tf main { margin: 0; padding: 0; max-width: none; }
+.bf header { margin-bottom: 0; padding: 0; }
+.bf nav { margin-bottom: 0; justify-content: flex-end; }
+.bf article { margin: 0; padding: 0; }
+.bf section { margin: 0; padding: 0; }
+.bf footer { margin: 0; padding: 0; }
+.bf main { margin: 0; padding: 0; max-width: none; }
 
 /* Pico adds underline+color to all links — tame it for UI elements */
 .bf-header a, .bf-nav a, .bf-footer a, .bf-card a,

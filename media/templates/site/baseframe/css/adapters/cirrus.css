@@ -1,6 +1,6 @@
 /* ===================================================================
    BaseFrame -> Cirrus Adapter
-   Maps tf-* semantic classes to Cirrus's vibrant Material-influenced style.
+   Maps bf-* semantic classes to Cirrus's vibrant Material-influenced style.
    Requires: lib/cirrus.min.css loaded before this file.
    =================================================================== */
 
@@ -148,7 +148,7 @@
 .bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
 
 /* ---- Content ------------------------------------------------------- */
-body.tf { color: #495057; font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; }
+body.bf { color: #495057; font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; }
 .bf-content { color: #495057; }
 
 .page-header h1 {

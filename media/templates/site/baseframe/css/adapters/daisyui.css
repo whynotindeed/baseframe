@@ -6,12 +6,15 @@
    All colors explicit hex/rgb — no CSS variables.
    ═══════════════════════════════════════════════════════════════ */
 :root {
-  --bf-accent: #570df8;
+  --bf-accent: #661AE6;
   --bf-bg: #fff;
   --bf-text: #1f2937;
+  --bf-text-soft: #9ca3af;
+  --bf-border: #e5e7eb;
+  --bf-hover-bg: #f3f4f6;
 }
 
-body.tf {
+body.bf {
   font-family: "Inter", system-ui, sans-serif;
   background: #f9fafb;
   color: #1f2937;
@@ -24,7 +27,7 @@ body.tf {
 }
 .bf-logo-label {
   color: #fff;
-  background: #570df8;
+  background: #661AE6;
   padding: .2rem .6rem;
   border-radius: .5rem;
   font-size: .85rem;
@@ -47,10 +50,10 @@ body.tf {
 }
 .bf-nav .mod-menu__sub { border-color: #e5e7eb; border-radius: 1rem; }
 .bf-nav .mod-menu__sub .nav-item > a { color: #1f2937; border-radius: .5rem; }
-.bf-nav .mod-menu__sub .nav-item > a:hover { background: #f3f4f6; color: #570df8; }
+.bf-nav .mod-menu__sub .nav-item > a:hover { background: #f3f4f6; color: #661AE6; }
 .bf-nav .nav-item.current > a,
 .bf-nav .nav-item.active > a {
-  background: #570df8;
+  background: #661AE6;
   color: #fff;
   font-weight: 600;
 }
@@ -61,7 +64,7 @@ body.tf {
 
 /* ─── Hero — vibrant gradient with glass overlay feel ──────── */
 .bf-hero {
-  background: linear-gradient(135deg, #570df8, #d926a9);
+  background: linear-gradient(135deg, #661AE6, #d926a9);
   color: #fff;
   text-align: center;
   padding: 5rem 0;
@@ -116,13 +119,13 @@ body.tf {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .04em;
-  background: #570df8;
+  background: #661AE6;
   color: #fff;
   border-radius: 9999px;
 }
 .bf-card-title { font-size: 1.15rem; font-weight: 700; margin: 0; }
 .bf-card-title a { color: #1f2937; text-decoration: none; }
-.bf-card-title a:hover { color: #570df8; }
+.bf-card-title a:hover { color: #661AE6; }
 .bf-card-date { font-size: .75rem; color: #9ca3af; }
 .bf-card-text { font-size: .9rem; flex: 1; color: #6b7280; }
 
@@ -133,7 +136,7 @@ body.tf {
   padding: .5rem 1rem;
   font-size: .8rem;
   font-weight: 700;
-  background: #570df8;
+  background: #661AE6;
   color: #fff;
   border-radius: .25rem;
   text-decoration: none;
@@ -179,11 +182,11 @@ body.tf {
   display: block; padding: .4rem .5rem; text-decoration: none;
   color: #1f2937; border-radius: .5rem; transition: all .15s;
 }
-.bf-sidebar .mod-articles-link:hover { background: #f3f4f6; color: #570df8; }
+.bf-sidebar .mod-articles-link:hover { background: #f3f4f6; color: #661AE6; }
 .bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
 
 /* ─── Content headings ─────────────────────────────────────── */
-body.tf { color: #1f2937; }
+body.bf { color: #1f2937; }
 .bf-content { color: #1f2937; }
 .page-header h1 { font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem; }
 .com-content-article__body h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: .5rem; color: #1f2937; }
@@ -212,19 +215,19 @@ body.tf { color: #1f2937; }
 .com-content-article__body .grid > article > header,
 .com-content-article__body .home-grid > article > header {
   font-size: .6rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .1em; color: #fff; background: #570df8;
+  letter-spacing: .1em; color: #fff; background: #661AE6;
   display: inline-block; padding: .2rem .6rem; border-radius: .375rem;
   margin-bottom: .75rem;
 }
 .com-content-article__body .grid > article > h3,
 .com-content-article__body .home-grid > article > h3 {
-  margin-top: 0; color: #570df8; font-size: 1.5rem;
+  margin-top: 0; color: #661AE6; font-size: 1.5rem;
 }
 .com-content-article__body .grid > article > hgroup > h3 {
-  margin-top: 0; color: #570df8; font-size: 2rem; font-weight: 800;
+  margin-top: 0; color: #661AE6; font-size: 2rem; font-weight: 800;
 }
 .com-content-article__body .grid > div > h3 {
-  font-size: 2.5rem; font-weight: 800; color: #570df8; margin-bottom: .25rem; line-height: 1;
+  font-size: 2.5rem; font-weight: 800; color: #661AE6; margin-bottom: .25rem; line-height: 1;
 }
 .com-content-article__body .grid > article ul,
 .com-content-article__body .home-grid > article ul {
@@ -236,7 +239,7 @@ body.tf { color: #1f2937; }
 .com-content-article__body a[role="button"] {
   display: inline-flex; padding: .65rem 1.5rem; font-weight: 700; font-size: .9rem;
   text-decoration: none; border-radius: .25rem; transition: all .2s;
-  background: #570df8; color: #fff; border: none;
+  background: #661AE6; color: #fff; border: none;
 }
 .com-content-article__body a[role="button"]:hover { opacity: .85; }
 .com-content-article__body a[role="button"].secondary {
@@ -248,7 +251,7 @@ body.tf { color: #1f2937; }
 blockquote {
   background: #fff;
   border: 2px solid #e5e7eb;
-  border-left: 4px solid #570df8;
+  border-left: 4px solid #661AE6;
   border-radius: 0 1rem 1rem 0;
   padding: 1.5rem 2rem;
   margin: 1.5rem 0;
@@ -256,7 +259,7 @@ blockquote {
   color: #1f2937;
 }
 blockquote footer { font-style: normal; margin-top: .75rem; background: none; padding: 0; }
-blockquote cite { font-weight: 700; color: #570df8; }
+blockquote cite { font-weight: 700; color: #661AE6; }
 
 /* FAQ — DaisyUI collapse, thick border, + / - indicator */
 details {
@@ -279,14 +282,14 @@ details summary::after {
   content: '+';
   font-size: 1.25rem;
   font-weight: 300;
-  color: #570df8;
+  color: #661AE6;
   transition: transform .2s;
 }
 details[open] summary::after { content: '\2212'; }
 details summary:hover { background: #f9fafb; }
 details[open] summary {
   border-bottom: 2px solid #e5e7eb;
-  background: #570df8;
+  background: #661AE6;
   color: #fff;
 }
 details[open] summary::after { color: #fff; }
@@ -305,7 +308,7 @@ mark {
 .tags .btn-info {
   display: inline-block; padding: .2rem .65rem; font-size: .65rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: .04em; text-decoration: none;
-  background: #570df8; color: #fff;
+  background: #661AE6; color: #fff;
   border-radius: 9999px; border: none;
 }
 .tags .btn-info:hover { opacity: .85; }
@@ -313,7 +316,7 @@ mark {
 /* Read more — filled button */
 .readmore .btn-secondary {
   display: inline-block; padding: .45rem 1rem; font-size: .8rem; font-weight: 700;
-  text-decoration: none; background: #570df8; color: #fff;
+  text-decoration: none; background: #661AE6; color: #fff;
   border-radius: .25rem; border: none;
 }
 .readmore .btn-secondary:hover { opacity: .85; }
@@ -332,7 +335,7 @@ mark {
 }
 .bf-pagination .page-link:hover { background: #f3f4f6; }
 .bf-pagination .active .page-link {
-  background: #570df8; color: #fff; border-color: #570df8;
+  background: #661AE6; color: #fff; border-color: #661AE6;
 }
 .bf-pagination .disabled .page-link { opacity: .3; pointer-events: none; }
 .pagination__wrapper { display: contents; }
@@ -349,7 +352,7 @@ mark {
 .com-contact input:focus,
 .com-contact textarea:focus,
 .com-contact select:focus {
-  border-color: #570df8;
+  border-color: #661AE6;
   outline: none;
   box-shadow: 0 0 0 3px rgba(100,25,230,.12);
 }
@@ -358,7 +361,7 @@ mark {
 .com-contact .btn-primary,
 .com-contact button[type="submit"] {
   display: inline-flex; padding: .65rem 1.5rem; font-weight: 700; font-size: .9rem;
-  background: #570df8; color: #fff;
+  background: #661AE6; color: #fff;
   border: none; border-radius: .5rem; cursor: pointer;
 }
 
@@ -370,7 +373,7 @@ mark {
 }
 .bf-footer-bottom { color: #9ca3af; }
 .bf-footer a { color: #1f2937; text-decoration: none; }
-.bf-footer a:hover { color: #570df8; }
+.bf-footer a:hover { color: #661AE6; }
 .bf-footer .bf-module-title {
   font-size: .7rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: .08em; color: #9ca3af; margin-bottom: .75rem;
@@ -403,4 +406,4 @@ mark {
   display: block; padding: .65rem .75rem; text-decoration: none;
   border-radius: .5rem; transition: all .15s; color: #1f2937;
 }
-.com-tags-tag__category .list-group-item h3 a:hover { background: #f3f4f6; color: #570df8; }
+.com-tags-tag__category .list-group-item h3 a:hover { background: #f3f4f6; color: #661AE6; }

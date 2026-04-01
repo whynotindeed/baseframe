@@ -1,6 +1,6 @@
 /* ===================================================================
    BaseFrame -> NES.css Adapter
-   Maps tf-* semantic classes to an 8-bit pixel art aesthetic.
+   Maps bf-* semantic classes to an 8-bit pixel art aesthetic.
    Requires: lib/nes.min.css loaded before this file.
    =================================================================== */
 
@@ -29,7 +29,7 @@
 }
 
 /* ---- Dark NES background for the whole page ---- */
-[data-framework="nes"] body.tf, body.tf { background: #212529 !important; color: #e9ecef !important; }
+[data-framework="nes"] body.bf, body.bf { background: #212529 !important; color: #e9ecef !important; }
 
 /* ---- Header -------------------------------------------------------- */
 .bf-header {
@@ -197,8 +197,8 @@
 .bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
 
 /* ---- Content — light text on dark bg, dark text inside white cards ---- */
-body.tf, .bf-content { color: #e9ecef !important; }
-body.tf p, body.tf li, body.tf small, body.tf span, body.tf time, body.tf a { color: #e9ecef; }
+body.bf, .bf-content { color: #e9ecef !important; }
+body.bf p, body.bf li, body.bf small, body.bf span, body.bf time, body.bf a { color: #e9ecef; }
 /* White-interior elements get dark text */
 .bf-card, .bf-card *, .bf-card-body, .bf-card-body * { color: #000 !important; }
 .bf-card-title a { color: #000 !important; }

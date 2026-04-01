@@ -1,6 +1,6 @@
 /* ===================================================================
    BaseFrame -> Fomantic UI Adapter
-   Maps tf-* semantic classes to Semantic UI's clean aesthetic.
+   Maps bf-* semantic classes to Semantic UI's clean aesthetic.
    Requires: lib/fomantic.min.css loaded before this file.
    =================================================================== */
 
@@ -141,7 +141,7 @@
 .bf-sidebar .tagspopular ul { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
 
 /* ---- Content ------------------------------------------------------- */
-body.tf { color: rgba(0,0,0,.87); font-family: "Inter", "Helvetica Neue", Arial, Helvetica, sans-serif; }
+body.bf { color: rgba(0,0,0,.87); font-family: "Inter", "Helvetica Neue", Arial, Helvetica, sans-serif; }
 .bf-content { color: rgba(0,0,0,.87); }
 
 .page-header h1 {

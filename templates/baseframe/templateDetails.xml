@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="template" client="site" method="upgrade">
-	<name>baseframe</name>
+	<name>taidframe</name>
 	<version>1.0.0</version>
 	<creationDate>2026-03</creationDate>
 	<author>The AI Director</author>
 	<authorUrl>https://claudejoomla.com</authorUrl>
-	<description>BaseFrame — one template, any CSS framework. Clean semantic HTML with swappable CSS adapters. Built for AI-assisted development.</description>
+	<description>TaidFrame — one template, any CSS framework. Clean semantic HTML with swappable CSS adapters. Built for AI-assisted development.</description>
 
 	<files>
 		<filename>component.php</filename>
@@ -13,10 +13,9 @@
 		<filename>index.php</filename>
 		<filename>templateDetails.xml</filename>
 		<folder>html</folder>
-		<folder>language</folder>
 	</files>
 
-	<media destination="templates/site/baseframe" folder="media">
+	<media destination="templates/site/taidframe" folder="media">
 		<folder>css</folder>
 		<folder>js</folder>
 		<folder>img</folder>
@@ -37,7 +36,7 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic" label="BaseFrame">
+			<fieldset name="basic" label="TaidFrame">
 				<field name="framework" type="list" label="CSS Framework" default="bulma">
 					<option value="bulma">Bulma</option>
 					<option value="chota">Chota (3KB micro)</option>
@@ -58,6 +57,11 @@
 					<option value="local">Local (shipped with template)</option>
 					<option value="cdn">CDN (always latest version)</option>
 				</field>
+				<field name="searchHighlight" type="list" label="Search Highlighting" default="0" description="Show highlighted search terms when arriving from Smart Search">
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+				</field>
+				<field name="highlightColor" type="color" label="Highlight Color" default="#fff3cd" description="Background color for highlighted search terms (only when highlighting is enabled)" />
 			</fieldset>
 		</fields>
 	</config>
