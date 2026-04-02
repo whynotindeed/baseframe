@@ -1200,6 +1200,8 @@ p.com-content-category__counter.counter.float-end {
   border-left: none;
 }
 .bf-sidebar .mod-login .mod-login__submit { margin-top: .75rem; }
+.plg_system_webauthn_login_button { padding: .5rem .75rem !important; }
+.plg_system_webauthn_login_button svg { width: 1.5rem; height: 1.5rem; flex-shrink: 0; }
 .bf-sidebar .mod-login .w-100 { width: 100%; }
 .bf-sidebar .mod-login__options {
   list-style: none;
