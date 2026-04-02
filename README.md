@@ -49,7 +49,7 @@ Every framework has a full demo site with Home, About, Services, Portfolio, Blog
 
 ## Demo
 
-**Live demos:** [claudejoomla.com](https://claudejoomla.com) — all 14 frameworks with full content, forum, gallery, newsletter, and blog.
+**Live demos:** [claudejoomla.com](https://claudejoomla.com) — all 13 frameworks + Vanilla with full content, forum, gallery, newsletter, and blog.
 
 ## Demo Content
 
@@ -64,24 +64,24 @@ index.php reads the "framework" param from templateDetails.xml
     ↓
 Loads: base.css → lib/{framework}.min.css → adapters/{framework}.css → custom.css
     ↓
-HTML uses tf-* semantic classes (tf-header, tf-card, tf-nav, etc.)
+HTML uses bf-* semantic classes (tf-header, tf-card, tf-nav, etc.)
     ↓
-Each adapter maps tf-* classes to framework-specific visuals
+Each adapter maps bf-* classes to framework-specific visuals
     ↓
 Switching frameworks = changing one dropdown in template settings
 ```
 
-All HTML uses `tf-*` prefixed classes. No framework-specific classes in PHP files. The adapters handle all visual mapping.
+All HTML uses `bf-*` prefixed classes. No framework-specific classes in PHP files. The adapters handle all visual mapping.
 
 ## Architecture
 
 ```
 templates/baseframe/
-├── index.php                 ← One file for all 13 frameworks
+├── index.php                 ← One file for all 14 options (13 frameworks + Vanilla)
 ├── templateDetails.xml       ← Framework dropdown param
 ├── error.php                 ← Error page
 ├── component.php             ← Component-only view
-└── html/                     ← Joomla HTML overrides (tf-* classes only)
+└── html/                     ← Joomla HTML overrides (bf-* classes only)
 
 media/templates/site/baseframe/
 ├── css/
@@ -91,11 +91,11 @@ media/templates/site/baseframe/
 │   │   ├── bulma.css
 │   │   ├── daisyui.css
 │   │   ├── nes.css
-│   │   └── ... (13 total)
+│   │   └── ... (14 total)
 │   └── lib/                  ← Framework CSS libraries (shipped locally)
 │       ├── bulma.min.css
 │       ├── daisyui.css
-│       └── ... (13 total)
+│       └── ... (14 total)
 └── js/
     └── baseframe.js          ← Hamburger menu, card links (vanilla JS)
 ```
@@ -152,22 +152,10 @@ Other Joomla views (login, registration, search results, news feeds, category li
 ## Adding a New CSS Framework
 
 1. Download the framework CSS → `css/lib/{name}.min.css`
-2. Create `css/adapters/{name}.css` mapping all `tf-*` classes
+2. Create `css/adapters/{name}.css` mapping all `bf-*` classes
 3. Add entry to `$frameworks` array in `index.php`
 4. Add `<option>` to `templateDetails.xml`
 5. Test all views: blog, article, contact, tags, FAQ, pricing
-
-## What's Styled
-
-Every Joomla component view is styled in every framework:
-
-- **Blog** — card grid with leading article, sidebar, pagination
-- **Articles** — full typography, headings, lists, tables, code blocks, blockquotes
-- **Contact** — form with styled inputs, labels, submit button
-- **Tags** — tag cloud, tagged items list
-- **FAQ** — `<details>/<summary>` accordion
-- **Pricing** — card grid with featured card highlight
-- **Components Showcase** — buttons, alerts, marks, statistics, tables
 
 ## No Build Tools
 
