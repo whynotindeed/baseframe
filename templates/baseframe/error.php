@@ -6,7 +6,7 @@ $siteName = \Joomla\CMS\Factory::getApplication()->get('sitename', 'BaseFrame');
 <html lang="<?php echo $this->language; ?>">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?php echo $errorCode; ?> — <?php echo htmlspecialchars($siteName); ?></title>
+<title><?php echo (int) $errorCode; ?> — <?php echo htmlspecialchars($siteName); ?></title>
 <style>
   body { font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #f5f5f5; color: #333; }
   .error { text-align: center; }

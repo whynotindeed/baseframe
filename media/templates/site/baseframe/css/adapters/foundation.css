@@ -12,6 +12,11 @@
   --bf-text-soft: #8a8a8a;
   --bf-border: #cacaca;
   --bf-hover-bg: #f4f4f4;
+  --bf-topbar-hover: #1779ba;
+  --bf-mark-bg: #dff0ff;
+  --bf-mark-text: #1779ba;
+  --bf-topbar-bg: #f0f6fb;
+  --bf-topbar-border: #dde8f2;
 }
 body.bf {
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;

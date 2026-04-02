@@ -11,6 +11,11 @@
   --bf-text-soft: #767676;
   --bf-border: #d4d4d5;
   --bf-hover-bg: #f3f4f5;
+  --bf-topbar-hover: #2185d0;
+  --bf-mark-bg: #dff0ff;
+  --bf-mark-text: #2185d0;
+  --bf-topbar-bg: #f0f6fd;
+  --bf-topbar-border: #dde8f5;
 }
 
 /* ---- Header -------------------------------------------------------- */

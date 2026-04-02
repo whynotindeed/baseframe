@@ -12,6 +12,11 @@
   --bf-text-soft: #868e96;
   --bf-border: #dee2e6;
   --bf-hover-bg: #e0e7ff;
+  --bf-topbar-hover: #6366f1;
+  --bf-mark-bg: #e0e7ff;
+  --bf-mark-text: #6366f1;
+  --bf-topbar-bg: #f3f2fe;
+  --bf-topbar-border: #e4e3f2;
 }
 body.bf {
   font-family: "Inter", system-ui, sans-serif;

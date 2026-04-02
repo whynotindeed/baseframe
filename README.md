@@ -1,10 +1,15 @@
-# BaseFrame
+# BaseFrame for Joomla
 
-**One Joomla template. 13 CSS frameworks. One dropdown.**
+**One Joomla template. 13 CSS frameworks + Vanilla. One dropdown.**
 
-BaseFrame is a universal Joomla 5/6 template that swaps CSS frameworks with a single admin setting. Same HTML, same content, completely different look — from Bulma to NES.css.
+[BaseFrame for Joomla](https://github.com/whynotindeed/baseframe) is a universal Joomla 5/6 template that swaps CSS frameworks with a single admin setting. Same HTML, same content, completely different look — from Bulma to NES.css.
 
 Built entirely by AI using [Claude Code](https://claude.ai/claude-code).
+
+## Download
+
+- **[Download latest ZIP](https://github.com/whynotindeed/baseframe/releases/latest)** — install directly via Joomla admin (System → Install → Upload)
+- **[Demo content](https://github.com/whynotindeed/baseframe#demo-content)** — seed your site with the same articles, menus, and modules as the live demo
 
 ## Made for AI-assisted development
 
@@ -27,25 +32,30 @@ Every framework has a full demo site with Home, About, Services, Portfolio, Blog
 
 | Framework | Type | Demo |
 |-----------|------|------|
-| [Bulma](https://bulma.io) | Full framework | [Demo](https://claudejoomla.com/tf-bulma) |
-| [Chota](https://jenil.github.io/chota/) | Micro (3KB) | [Demo](https://claudejoomla.com/tf-chota) |
-| [Cirrus](https://cirrus-ui.netlify.app) | Micro | [Demo](https://claudejoomla.com/tf-cirrus) |
-| [DaisyUI](https://daisyui.com) | Full framework | [Demo](https://claudejoomla.com/tf-daisyui) |
-| [Fomantic UI](https://fomantic-ui.com) | Full framework | [Demo](https://claudejoomla.com/tf-fomantic) |
-| [Foundation](https://get.foundation) | Full framework | [Demo](https://claudejoomla.com/tf-foundation) |
-| [Halfmoon](https://www.gethalfmoon.com) | Dark-first | [Demo](https://claudejoomla.com/tf-halfmoon) |
-| [MVP.css](https://andybrewer.github.io/mvp/) | Classless | [Demo](https://claudejoomla.com/tf-mvp) |
-| [NES.css](https://nostalgic-css.github.io/NES.css/) | Retro/8-bit | [Demo](https://claudejoomla.com/tf-nes) |
-| [Open Props](https://open-props.style) | Design tokens | [Demo](https://claudejoomla.com/tf-openprops) |
-| [Pico CSS](https://picocss.com) | Classless | [Demo](https://claudejoomla.com/tf-picocss) |
-| [Sakura](https://oxal.org/projects/sakura/) | Classless | [Demo](https://claudejoomla.com/tf-sakura) |
-| [UIkit](https://getuikit.com) | Full framework | [Demo](https://claudejoomla.com/tf-uikit) |
-| Vanilla CSS | No framework | [Demo](https://claudejoomla.com/tf-vanilla) |
+| [Bulma](https://bulma.io) | Full framework | [Demo](https://claudejoomla.com/bulma) |
+| [Chota](https://jenil.github.io/chota/) | Micro (3KB) | [Demo](https://claudejoomla.com/chota) |
+| [Cirrus](https://cirrus-ui.netlify.app) | Micro | [Demo](https://claudejoomla.com/cirrus) |
+| [DaisyUI](https://daisyui.com) | Full framework | [Demo](https://claudejoomla.com/daisyui) |
+| [Fomantic UI](https://fomantic-ui.com) | Full framework | [Demo](https://claudejoomla.com/fomantic) |
+| [Foundation](https://get.foundation) | Full framework | [Demo](https://claudejoomla.com/foundation) |
+| [Halfmoon](https://www.gethalfmoon.com) | Dark-first | [Demo](https://claudejoomla.com/halfmoon) |
+| [MVP.css](https://andybrewer.github.io/mvp/) | Classless | [Demo](https://claudejoomla.com/mvp) |
+| [NES.css](https://nostalgic-css.github.io/NES.css/) | Retro/8-bit | [Demo](https://claudejoomla.com/nes) |
+| [Open Props](https://open-props.style) | Design tokens | [Demo](https://claudejoomla.com/openprops) |
+| [Pico CSS](https://picocss.com) | Classless | [Demo](https://claudejoomla.com/pico) |
+| [Sakura](https://oxal.org/projects/sakura/) | Classless | [Demo](https://claudejoomla.com/sakura) |
+| [UIkit](https://getuikit.com) | Full framework | [Demo](https://claudejoomla.com/uikit) |
+| Vanilla CSS | No framework | [Demo](https://claudejoomla.com/vanilla) |
 
 ## Demo
 
-- **Live demos:** [claudejoomla.com](https://claudejoomla.com) — all 13 frameworks with full content
-- **Demo content download:** [go.claudejoomla.com/baseframe-demo](https://go.claudejoomla.com/baseframe-demo) — seed script to populate your site with the same demo articles, menus, and modules
+**Live demos:** [claudejoomla.com](https://claudejoomla.com) — all 14 frameworks with full content, forum, gallery, newsletter, and blog.
+
+## Demo Content
+
+Want your site to look like the live demo out of the box? The demo content package includes all the articles, menus, modules, forum posts, and configuration used on [claudejoomla.com](https://claudejoomla.com). Install BaseFrame first, then import the demo content SQL to get the full experience — framework landing pages, Why Joomla articles, blog cards, sidebar modules, and the complete navigation structure.
+
+Demo content package: coming soon.
 
 ## How It Works
 
@@ -173,8 +183,10 @@ One vanilla JS file. No jQuery, no React, no Alpine.js. The JS handles:
 
 ## License
 
-GPL v2+ — same as Joomla.
+**MIT License** — use it however you want. Free for personal and commercial use. No attribution required (but appreciated).
+
+See [LICENSE](LICENSE) for the full text.
 
 ## Credits
 
-Built by [Claude Code](https://claude.ai/claude-code) as part of the [Claude Joomla](https://claudejoomla.com) project.
+Built by [Claude Code](https://claude.ai/claude-code) as part of the [ClaudeJoomla.com](https://claudejoomla.com) project.

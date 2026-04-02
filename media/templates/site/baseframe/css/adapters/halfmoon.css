@@ -24,6 +24,13 @@ html { font-size: 100% !important; }
   --bf-text-soft: #6c757d;
   --bf-border: #3a3d41;
   --bf-hover-bg: rgba(24,144,255,.1);
+  --bf-topbar-bg: #13161a;
+  --bf-topbar-border: #2a2d31;
+  --bf-topbar-link: #6c757d;
+  --bf-topbar-hover: #1890ff;
+  --bf-mark-bg: rgba(24,144,255,.2);
+  --bf-mark-text: #b0b7c3;
+  --bf-topbar-active: #e2e8f0;
 }
 
 /* ---- Header -------------------------------------------------------- */
@@ -251,7 +258,7 @@ code {
   background: #1e2126 !important; color: #40a9ff; padding: .15em .4em;
   border-radius: .25rem; font-size: .88em; border: 1px solid #3a3d41;
 }
-pre code { background: transparent !important; border: none !important; padding: 0 !important; }
+pre code { background: rgba(24,144,255,.1) !important; border: none !important; padding: 0 !important; }
 pre { background: #1e2126; border: 1px solid #3a3d41; border-radius: .375rem; padding: 1rem; overflow-x: auto; }
 
 /* Phoca Gallery dark mode */
@@ -271,14 +278,16 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
   text-transform: uppercase; letter-spacing: .03em; text-decoration: none;
   background: rgba(24,144,255,.15); color: #b0b7c3;
   border-radius: 9999px; border: none;
+  height: auto !important; line-height: 1.4 !important;
 }
+.tags .list-inline-item { margin-bottom: 0 !important; }
 .tags .btn-info:hover { background: #1890ff; color: #fff; }
 
 /* Read more */
 /* Password toggle — Halfmoon's yellow .btn-secondary is too loud for a utility button */
 .input-password-toggle.btn-secondary {
-  background: transparent !important;
-  color: #6c757d !important;
+  background: rgba(24,144,255,.1) !important;
+  color: #1890ff !important;
   border-color: var(--bf-border, #3a3d41) !important;
   box-shadow: none !important;
 }
@@ -364,12 +373,13 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 .bf-footer ul li { padding: .15rem 0; }
 .bf-footer ul a { font-size: .9rem; }
 
-/* Alerts */
-.alert { padding: 1.25rem 1.5rem; border-radius: .4rem; margin: 1rem 0; border: 1px solid; }
-.alert-info { background: rgba(59,130,246,.1); color: #93c5fd; border-color: rgba(59,130,246,.2); }
-.alert-success { background: rgba(34,197,94,.1); color: #86efac; border-color: rgba(34,197,94,.2); }
-.alert-warning { background: rgba(234,179,8,.1); color: #fde047; border-color: rgba(234,179,8,.2); }
-.alert-danger { background: rgba(239,68,68,.1); color: #fca5a5; border-color: rgba(239,68,68,.2); }
+/* Alerts — Halfmoon dark palette */
+.alert { padding: 1rem 1.25rem; border-radius: .4rem; margin: 1rem 0; border: 1px solid; font-size: .9rem; }
+.alert-info { background: rgba(24,144,255,.12) !important; color: #60a5fa !important; border-color: rgba(24,144,255,.25) !important; }
+.alert-success { background: rgba(16,185,129,.12) !important; color: #34d399 !important; border-color: rgba(16,185,129,.25) !important; }
+.alert-warning { background: rgba(245,158,11,.12) !important; color: #fbbf24 !important; border-color: rgba(245,158,11,.25) !important; }
+.alert-danger { background: rgba(239,68,68,.12) !important; color: #f87171 !important; border-color: rgba(239,68,68,.25) !important; }
+
 
 /* Article image */
 .com-content-article figure.item-image { margin: 0 0 1.5rem; }
@@ -440,7 +450,7 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
   border-color: #3a3d41 !important;
 }
 #kunena .profilebox li { color: #6c757d !important; }
-#kunena .profilebox .badge { background: #2a2d32 !important; }
+#kunena .profilebox .badge { background: #2a2d32 !important; margin-top: .5rem; }
 /* Dark badges — light bg looks wrong on dark theme */
 .badge.bg-info, .badge.bg-secondary { background: rgba(24,144,255,.15) !important; color: #1890ff !important; border: 1px solid rgba(24,144,255,.3); }
 .com-content-categories__item { border-bottom-color: #3a3d41 !important; }
@@ -449,6 +459,7 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 /* Halfmoon's .content and li margin overrides kill Kunena profile sidebar */
 #kunena .profile-expand .content { margin: 0 !important; }
 #kunena .profilebox li, #kunena .profile-expand li { margin-bottom: 0 !important; }
+#kunena .profile-expand .heading { margin-top: .1rem; }
 #kunena .topic-starter { border-color: #3a3d41 !important; }
 
 /* AcyMailing dark mode */
@@ -470,8 +481,35 @@ tr:nth-child(even) td { background: rgba(24,144,255,.03); }
 #kunena .pagination .page-item.active .page-link { background: #1890ff !important; border-color: #1890ff !important; }
 #kunena .pagination .page-link { color: #e2e8f0 !important; border-color: #3a3d41 !important; height: auto !important; padding: .375rem .75rem !important; background: #2a2d32 !important; }
 #kunena .pagination .page-item.active .page-link { background: #1890ff !important; }
-#kunena .pagination .page-item.disabled .page-link { background: transparent !important; opacity: .4; }
+#kunena .pagination .page-item.disabled .page-link { background: rgba(24,144,255,.1) !important; opacity: .4; }
+#kunena .pagination .page-item { margin-bottom: 0 !important; }
+.page-link { height: auto !important; padding: .375rem .75rem !important; line-height: 1.5 !important; }
+.pagination .page-item { margin-bottom: 0 !important; }
 #kunena + div a { color: #6c757d !important; }
 /* Kunena stats/who's online */
 #kunena #kstats li, #kunena #kwho li { color: #b0b7c3 !important; }
 #kunena #kstats strong { color: #1890ff !important; }
+
+/* Component login — match icon backgrounds */
+.com-users-login .input-group-text {
+  background: rgba(24,144,255,.1) !important;
+  color: #1890ff !important;
+  border-color: #3a3d41 !important;
+}
+
+/* Component login — force icon containers to same size */
+.com-users-login .input-group-text,
+.com-users-login .input-password-toggle {
+  width: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  padding: .5rem 0 !important;
+  justify-content: center !important;
+  display: flex !important;
+  align-items: center !important;
+  height: auto !important;
+  background: rgba(24,144,255,.1) !important;
+  color: #1890ff !important;
+  border-color: #3a3d41 !important;
+  box-shadow: none !important;
+}

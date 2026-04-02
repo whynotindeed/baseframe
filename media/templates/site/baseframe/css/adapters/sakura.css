@@ -11,6 +11,11 @@
   --bf-text-soft: #6b8e8e;
   --bf-border: #e8d6e0;
   --bf-hover-bg: #fce4ec;
+  --bf-topbar-hover: #d4729c;
+  --bf-mark-bg: #fce4ec;
+  --bf-mark-text: #d4729c;
+  --bf-topbar-bg: #fdf4f8;
+  --bf-topbar-border: #f0e2ea;
 }
 
 /* ---- Header -------------------------------------------------------- */
@@ -96,6 +101,88 @@
 }
 .bf-card-readmore:hover { text-decoration: underline; }
 
+/* Override Sakura's label { display: block; font-weight: 600 } inside form-check */
+.form-check label,
+.form-check-label {
+  display: inline !important;
+  font-weight: 400 !important;
+  margin-bottom: 0 !important;
+}
+/* Override Sakura's fieldset { font-weight: 600 } — makes all form text bold */
+fieldset {
+  font-weight: 400 !important;
+}
+/* Override Sakura's input { margin-bottom: 10px } on form controls */
+.form-control,
+.bf-content input:not([type="hidden"]),
+.bf-content textarea,
+.bf-content select {
+  margin-bottom: 0 !important;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  margin-bottom: 0 !important;
+}
+
+/* Override Sakura's input { margin-bottom: 10px } in input-groups and sidebar */
+.bf-sidebar .input-group input,
+.bf-sidebar .input-group button,
+.input-group .form-control {
+  margin-bottom: 0 !important;
+}
+/* Sakura's ul { margin-bottom: 2.5rem } leaks into hidden autocomplete list */
+.bf-sidebar ul[hidden],
+.bf-sidebar .awesomplete ul {
+  margin-bottom: 0 !important;
+}
+/* Sidebar & breadcrumb list overrides */
+.bf-sidebar li,
+.mod-breadcrumbs li,
+nav.mod-breadcrumbs__wrapper li {
+  margin-bottom: 0 !important;
+}
+.bf-sidebar .mod-list,
+.bf-sidebar .list-unstyled {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Articles list — Sakura's th { background } breaks row striping */
+.com-content-category__table tbody th {
+  background: transparent !important;
+}
+
+/* Kunena — Sakura's select/input margin leaks */
+#kunena select,
+#kunena input:not([type="hidden"]) {
+  margin-bottom: 0 !important;
+}
+/* Kunena — Sakura's table/th/td styling must not override Bootstrap inside #kunena */
+#kunena table {
+  text-align: left !important;
+}
+#kunena th, #kunena td {
+  padding: inherit;
+}
+/* Kunena — Sakura's a:hover border-bottom leaks into forum links */
+#kunena a:hover {
+  border-bottom: none !important;
+}
+/* Kunena — Sakura's ul margin leaks */
+#kunena ul {
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
+}
+#kunena li {
+  margin-bottom: 0 !important;
+}
+/* Kunena SVG icons */
+#kunena svg {
+  display: inline !important;
+  height: 1em !important;
+}
+
 /* Override Sakura's a:hover { border-bottom: 2px solid } on UI links */
 .bf-card a:hover,
 .bf-card-title a:hover,
@@ -105,7 +192,9 @@
 .bf-nav a:hover,
 .bf-nav .mod-menu__toggle-sub:hover,
 .bf-footer a:hover,
-.bf-logo:hover { border-bottom: none; }
+.bf-logo:hover,
+.bf-fw-btn:hover,
+.bf-fw-card a:hover { border-bottom: none; }
 
 /* Leading card */
 .bf-blog-leading { margin-bottom: 2rem; }

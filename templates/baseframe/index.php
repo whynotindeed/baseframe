@@ -19,6 +19,10 @@ $isHome    = ($active === $menu->getDefault());
 $view      = $input->getCmd('view', '');
 $option    = $input->getCmd('option', '');
 
+// Detect if we're truly on the homepage URL (not just a menu fallback for orphan pages)
+$requestUri = $input->server->getString('REQUEST_URI', '/');
+$isRealHome = $isHome && (preg_match('#^/(\?.*)?$#', parse_url($requestUri, PHP_URL_PATH) ?: '/'));
+
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 
 $siteName   = htmlspecialchars($app->get('sitename'), ENT_QUOTES, 'UTF-8');
@@ -161,6 +165,15 @@ $frameworks = [
     ],
 ];
 
+// Auto-detect framework from menu item alias (/bulma, /daisyui, etc.)
+$fwContext = "";
+if (!$fwOverride && $active && isset($frameworks[$active->alias])) {
+    $fwOverride = $active->alias;
+    $fwContext = $active->alias;
+} elseif ($fwOverride && !$isRealHome && !in_array($active ? $active->id : 0, [194])) {
+    $fwContext = $fwOverride;
+}
+
 // Apply URL override if valid
 if ($fwOverride && isset($frameworks[$fwOverride])) {
     $framework = $fwOverride;
@@ -169,6 +182,7 @@ $fw = $frameworks[$framework] ?? $frameworks['bulma'];
 $themeColor = $fw['color'];
 $fwLabel = $fw['label'];
 $fwUrl = $fw['url'] ?? '';
+$fwSafe = htmlspecialchars($fwContext, ENT_QUOTES, 'UTF-8');
 
 // CSS source: local (default) or cdn (always latest)
 $cssSource = (string) $this->params->get('cssSource', 'local');
@@ -179,8 +193,9 @@ if ($fw['lib'] || $fw['cdn']) {
     $libUrl = ($cssSource === 'cdn' && !empty($fw['cdn'])) ? $fw['cdn'] : $mediaBase . '/css/' . $fw['lib'];
     if ($libUrl) $this->addStyleSheet($libUrl);
 }
-$this->addStyleSheet($mediaBase . '/css/base.css?v=4');
-$this->addStyleSheet($mediaBase . '/css/' . $fw['css'] . '?v=3');
+$this->addStyleSheet('/media/system/css/joomla-fontawesome.min.css');
+$this->addStyleSheet($mediaBase . '/css/base.css?v=5');
+$this->addStyleSheet($mediaBase . '/css/' . $fw['css'] . '?v=4');
 $this->addStyleSheet($mediaBase . '/css/custom.css?v=2');
 $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
 ?>
@@ -193,22 +208,66 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
 </head>
-<body class="bf <?php echo $isHome ? 'bf-home' : ''; ?> <?php echo htmlspecialchars($option, ENT_QUOTES, 'UTF-8'); ?> view-<?php echo htmlspecialchars($view, ENT_QUOTES, 'UTF-8'); ?><?php echo $framework === 'halfmoon' ? ' dark-mode' : ''; ?>">
+<body class="bf <?php echo $isRealHome ? 'bf-home' : ''; ?> <?php echo htmlspecialchars($option, ENT_QUOTES, 'UTF-8'); ?> view-<?php echo htmlspecialchars($view, ENT_QUOTES, 'UTF-8'); ?><?php echo $framework === 'halfmoon' ? ' dark-mode' : ''; ?>">
 
     <a href="#bf-main" class="bf-skip">Skip to content</a>
+
+    <!-- ─── Top bar ──────────────────────────────────────────── -->
+    <div class="bf-topbar">
+        <div class="bf-container bf-topbar-inner">
+            <a href="https://theaidirector.win" class="bf-topbar-link">TheAIDirector.Win</a>
+            <a href="https://claudejoomla.com" class="bf-topbar-link bf-topbar-active">ClaudeJoomla.com</a>
+            <a href="https://claudetemplates.net" class="bf-topbar-link">ClaudeTemplates.net</a>
+        </div>
+    </div>
 
     <!-- ─── Header ──────────────────────────────────────────── -->
     <header class="bf-header" id="bf-header">
         <div class="bf-container bf-header-inner">
             <a class="bf-logo" href="/">
-                <?php if ($fwLabel !== 'Vanilla'): ?>
+                <?php if ($isRealHome && !$fwContext): ?>
+                <span class="bf-logo-label">BaseFrame</span>
+                <span class="bf-logo-site">for Joomla</span>
+                <?php else: ?>
+                <?php if ($fwLabel === 'Vanilla'): ?>
+                <span class="bf-logo-label">BaseFrame</span>
+                <?php else: ?>
                 <span class="bf-logo-label"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></span>
                 <?php endif; ?>
                 <span class="bf-logo-site"><?php echo $siteName; ?></span>
+                <?php endif; ?>
             </a>
 
             <nav class="bf-nav" id="bf-nav" aria-label="Main">
+            <?php if ($fwContext): ?>
+                <ul class="mod-menu mod-list nav">
+                    <li class="nav-item"><a href="/<?php echo $fwSafe; ?>">About</a></li>
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/blog?fw=<?php echo $fwSafe; ?>">Blog</a></li>
+                    <li class="nav-item"><a href="/forum?fw=<?php echo $fwSafe; ?>">Forum</a></li>
+                    <li class="nav-item"><a href="/portfolio?fw=<?php echo $fwSafe; ?>">Portfolio</a></li>
+                    <li class="nav-item"><a href="/contact?fw=<?php echo $fwSafe; ?>">Contact</a></li>
+                    <li class="nav-item deeper parent"><button class="mod-menu__toggle-sub" aria-expanded="false" aria-controls="bf-fwnav-sub"><span class="mod-menu__heading nav-header">More</span><span class="icon-chevron-down" aria-hidden="true"></span></button>
+                    <ul class="mod-menu__sub list-unstyled small" aria-hidden="true" id="bf-fwnav-sub">
+                        <li class="nav-item"><a href="/more/gallery?fw=<?php echo $fwSafe; ?>">Gallery</a></li>
+                        <li class="nav-item"><a href="/more/newsletter/archive/listing?fw=<?php echo $fwSafe; ?>">Newsletter</a></li>
+                        <li class="nav-item"><a href="/more/articles-list?fw=<?php echo $fwSafe; ?>">Articles</a></li>
+                        <li class="nav-item"><a href="/more/faq?fw=<?php echo $fwSafe; ?>">FAQ</a></li>
+                        <li class="nav-item"><a href="/more/services?fw=<?php echo $fwSafe; ?>">Services</a></li>
+                        <li class="nav-item"><a href="/more/pricing?fw=<?php echo $fwSafe; ?>">Pricing</a></li>
+                        <li class="nav-item"><a href="/more/news-feeds?fw=<?php echo $fwSafe; ?>">News Feeds</a></li>
+                        <li class="nav-item"><a href="/more/categories?fw=<?php echo $fwSafe; ?>">Categories</a></li>
+                        <li class="nav-item"><a href="/more/tags?fw=<?php echo $fwSafe; ?>">Tags</a></li>
+                        <li class="nav-item"><a href="/more/archive?fw=<?php echo $fwSafe; ?>">Archive</a></li>
+                        <li class="nav-item"><a href="/more/search?fw=<?php echo $fwSafe; ?>">Search</a></li>
+                        <li class="nav-item"><a href="/more/login?fw=<?php echo $fwSafe; ?>">Login</a></li>
+                        <li class="nav-item"><a href="/more/typography?fw=<?php echo $fwSafe; ?>">Typography</a></li>
+                        <li class="nav-item"><a href="/more/components?fw=<?php echo $fwSafe; ?>">Components</a></li>
+                    </ul></li>
+                </ul>
+            <?php else: ?>
                 <jdoc:include type="modules" name="menu" style="none" />
+            <?php endif; ?>
             </nav>
 
             <button class="bf-hamburger" id="bf-hamburger" aria-label="Menu" aria-controls="bf-nav" aria-expanded="false">
@@ -250,10 +309,34 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
             </div>
             <?php endif; ?>
         </div>
+    <?php if ($isRealHome && $this->countModules('footer')): ?>
+    <div class="bf-container" style="padding-bottom:1rem;">
+        <jdoc:include type="modules" name="footer" style="none" />
+    </div>
+    <div class="bf-container bf-home-bottom-wrap">
+        <section class="bf-home-bottom">
+        <h2>Built Entirely with AI</h2>
+        <p>Every line of CSS in BaseFrame &mdash; all 14 CSS adapter files, the base stylesheet, the template logic, the Kunena forum integration, the Phoca Gallery styling, the AcyMailing overrides &mdash; was written by <strong>Claude Code</strong> running inside VS Code. Not a single line was hand-coded.</p>
+        <p>The entire workflow runs on a conversation: describe what you want, paste a screenshot or the deep debug CSS output, and Claude writes the fix. No context-switching between browser and editor. No manual CSS debugging. Just talk and ship.</p>
+        <h2>The Secret Weapon: Stop Screenshotting CSS</h2>
+        <p>The fastest way to get Claude Code to fix a CSS issue is to stop screenshotting your DevTools and start sending <strong>computed styles + matched rules + the DOM tree</strong> in one paste. This is the workflow that built BaseFrame &mdash; and it is covered in detail in <a href="https://theaidirector.win/stop-screenshotting-css" target="_blank" rel="noopener">Stop Screenshotting CSS</a> on The AI Director.</p>
+        <p>That article explains the exact deep debug technique used to audit and polish every CSS framework adapter you see on this site. If you want to build or customize Joomla templates with AI, start there.</p>
+        <h2>Built for Claude Code</h2>
+        <p><a href="https://github.com/whynotindeed/baseframe" target="_blank" rel="noopener">BaseFrame for Joomla</a> is designed for developers using <strong>Claude Code</strong> (or any AI coding agent) to build and customize Joomla templates. Paste a deep debug CSS output, describe what you want, and Claude writes the adapter fix. Every CSS framework adapter on this site was built that way &mdash; no manual CSS debugging required.</p>
+        <h2>Open Source</h2>
+        <p>BaseFrame for Joomla is free and open source under the <strong>MIT License</strong>. Use it however you want &mdash; personal, commercial, no restrictions.</p>
+        <div class="bf-home-cta">
+            <a href="https://github.com/whynotindeed/baseframe" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-primary">View on GitHub</a>
+            <a href="https://github.com/whynotindeed/baseframe/releases/latest" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-primary">Download ZIP</a>
+            <a href="https://github.com/whynotindeed/baseframe#demo-content" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-secondary">Demo Content</a>
+        </div>
+        </section>
+    </div>
+    <?php endif; ?>
     </main>
 
     <!-- ─── Framework bar ───────────────────────────────────── -->
-    <?php if ($this->countModules('footer')): ?>
+    <?php if ($this->countModules('footer') && !$isRealHome): ?>
     <section class="bf-framework-section">
         <div class="bf-container">
             <jdoc:include type="modules" name="footer" style="none" />
@@ -278,8 +361,8 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
             </div>
             <?php endif; ?>
             <div class="bf-footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> <?php echo $siteName; ?></p>
-                <p>Powered by <a href="https://www.joomla.org" target="_blank">Joomla</a>, <?php if ($fwUrl): ?><a href="<?php echo htmlspecialchars($fwUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></a><?php else: ?><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?><?php endif; ?> &amp; <a href="https://github.com/whynotindeed/baseframe" target="_blank">BaseFrame</a></p>
+                <p>&copy; <?php echo date('Y'); ?> <a href="https://claudejoomla.com" style="color:inherit;text-decoration:none;">ClaudeJoomla.com</a></p>
+                <p>Powered by <a href="https://www.joomla.org" target="_blank">Joomla</a>, <?php if ($fwUrl): ?><a href="<?php echo htmlspecialchars($fwUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></a><?php else: ?><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?><?php endif; ?> &amp; <a href="https://github.com/whynotindeed/baseframe" target="_blank">BaseFrame</a> · <a href="https://weblio.no/?lang=en" style="color:inherit;opacity:.6;text-decoration:none;">weblio.no</a></p>
             </div>
         </div>
     </footer>

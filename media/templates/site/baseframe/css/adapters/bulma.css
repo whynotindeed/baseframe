@@ -11,6 +11,11 @@
   --bf-text-soft: #7a7a7a;
   --bf-border: #dbdbdb;
   --bf-hover-bg: #f5f5f5;
+  --bf-topbar-hover: #00d1b2;
+  --bf-mark-bg: #d1fff8;
+  --bf-mark-text: #009e86;
+  --bf-topbar-bg: #f2faf8;
+  --bf-topbar-border: #e0f0ec;
   --bulma-family-primary: "Inter", system-ui, sans-serif;
   --bulma-radius: 0.5rem;
 }
@@ -205,14 +210,14 @@ body.bf { color: #4a4a4a; }
 /* Button-like links */
 .com-content-article__body a[role="button"] {
   display: inline-flex; padding: .65rem 1.5rem; font-weight: 600; font-size: .9rem;
-  text-decoration: none; border-radius: .5rem; transition: all .2s;
-  background: #00d1b2; color: #fff; border: 2px solid #00d1b2;
+  text-decoration: none !important; border-radius: .5rem; transition: all .2s;
+  background: #00d1b2; color: #fff !important; border: 2px solid #00d1b2;
 }
 .com-content-article__body a[role="button"]:hover {
   background: #009e86; border-color: #009e86;
 }
 .com-content-article__body a[role="button"].secondary {
-  background: transparent; color: #00d1b2;
+  background: transparent; color: #00d1b2 !important;
 }
 
 /* Blockquote */

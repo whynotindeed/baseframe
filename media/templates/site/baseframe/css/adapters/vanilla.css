@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    BaseFrame → Vanilla Adapter
    Zero CSS framework. Pure hand-written CSS. Warm minimal aesthetic
-   — cream #faf9f7 bg, charcoal text, amber #333333 accent.
+   — cream #faf9f7 bg, charcoal text, amber #b45309 accent.
    Top amber accent bar, clamp() fluid typography, handcrafted
    transitions, logical properties feel. Proves you don't need a
    framework to look good.
@@ -14,12 +14,17 @@
   initial-value: #555555;
 }
 :root {
-  --bf-accent: #333333;
+  --bf-accent: #b45309;
   --bf-bg: #faf9f7;
   --bf-text: #1c1917;
   --bf-text-soft: #78716c;
   --bf-border: #e7e5e4;
   --bf-hover-bg: #f0f0f0;
+  --bf-topbar-hover: #b45309;
+  --bf-mark-bg: #fef3e0;
+  --bf-mark-text: #b45309;
+  --bf-topbar-bg: #f7f5f0;
+  --bf-topbar-border: #ebe7df;
 }
 html { scroll-behavior: smooth; }
 body.bf {
@@ -36,10 +41,10 @@ p { text-wrap: pretty; }
 .bf-header {
   background: #fff;
   border-bottom: 1px solid #e7e5e4;
-  border-top: 4px solid #333333;
+  border-top: 4px solid #b45309;
   box-shadow: 0 1px 2px rgba(0,0,0,.03);
 }
-.bf-logo-label { color: #333333; font-weight: 800; }
+.bf-logo-label { color: #b45309; font-weight: 800; }
 .bf-logo-site { color: #1c1917; font-weight: 600; }
 
 /* Nav — warm, understated, amber highlights */
@@ -72,7 +77,7 @@ p { text-wrap: pretty; }
 
 /* Hero — warm amber gradient */
 .bf-hero {
-  background: linear-gradient(135deg, #333333, #4a4a4a);
+  background: linear-gradient(135deg, #b45309, #92400e);
   color: #fff;
   padding: 5rem 0;
   text-align: center;
@@ -128,7 +133,7 @@ p { text-wrap: pretty; }
   margin: 0;
 }
 .bf-card-title a { color: #1c1917; text-decoration: none; }
-.bf-card-title a:hover { color: #333333; }
+.bf-card-title a:hover { color: #b45309; }
 .bf-card-date { font-size: .75rem; color: #78716c; }
 .bf-card-text { font-size: .9rem; flex: 1; color: #78716c; }
 .bf-card-readmore {
@@ -137,7 +142,7 @@ p { text-wrap: pretty; }
   padding-top: .75rem;
   font-size: .8rem;
   font-weight: 600;
-  color: #333333;
+  color: #b45309;
   text-decoration: none;
   border-top: 1px solid #e7e5e4;
   transition: color .2s ease, transform .25s ease;
@@ -233,22 +238,22 @@ p { text-wrap: pretty; }
 .com-content-article__body .grid > article > header,
 .com-content-article__body .home-grid > article > header {
   font-size: .65rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .06em; color: #333333;
+  letter-spacing: .06em; color: #b45309;
   margin-bottom: .75rem; padding-bottom: .5rem;
   border-bottom: 2px solid #f0f0f0;
 }
 .com-content-article__body .grid > article > h3,
 .com-content-article__body .home-grid > article > h3 {
-  margin-top: 0; color: #333333; font-size: 1.5rem;
+  margin-top: 0; color: #b45309; font-size: 1.5rem;
 }
 .com-content-article__body .grid > article > hgroup > h3 {
-  margin-top: 0; color: #333333;
+  margin-top: 0; color: #b45309;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
 }
 .com-content-article__body .grid > div > h3 {
   font-size: clamp(2rem, 4vw, 2.5rem);
-  font-weight: 700; color: #333333; margin-bottom: .25rem; line-height: 1;
+  font-weight: 700; color: #b45309; margin-bottom: .25rem; line-height: 1;
 }
 .com-content-article__body .grid > article ul,
 .com-content-article__body .home-grid > article ul {
@@ -261,23 +266,23 @@ p { text-wrap: pretty; }
   display: inline-flex; padding: .65rem 1.5rem; font-weight: 600; font-size: .9rem;
   text-decoration: none; border-radius: .375rem;
   transition: all .25s ease;
-  background: #333333; color: #fff; border: none;
+  background: #b45309; color: #fff; border: none;
 }
 .com-content-article__body a[role="button"]:hover {
   background: #555555;
   transform: translateY(-1px);
 }
 .com-content-article__body a[role="button"].secondary {
-  background: transparent; color: #333333; border: 2px solid #333333;
+  background: transparent; color: #b45309; border: 2px solid #b45309;
 }
 .com-content-article__body a[role="button"].secondary:hover {
-  background: #333333; color: #fff;
+  background: #b45309; color: #fff;
 }
 
 /* Blockquote — amber accent, warm cream bg */
 blockquote {
   background: #f0f0f0;
-  border-left: 4px solid #333333;
+  border-left: 4px solid #b45309;
   border-radius: 0 .375rem .375rem 0;
   padding: 1.5rem 2rem;
   margin: 1.5rem 0;
@@ -309,7 +314,7 @@ details summary {
 details summary:hover { background: #f0f0f0; }
 details[open] summary {
   border-bottom: 1px solid #e7e5e4;
-  background: #333333;
+  background: #b45309;
   color: #fff;
 }
 details > *:not(summary) { padding: 0 1.25rem; }
@@ -324,17 +329,17 @@ mark { background: #f0f0f0; color: #555555; padding: .1em .3em; border-radius: .
   border-radius: .375rem; border: none;
   transition: all .2s ease;
 }
-.tags .btn-info:hover { background: #333333; color: #fff; }
+.tags .btn-info:hover { background: #b45309; color: #fff; }
 
 /* Read more — outlined, amber */
 .readmore .btn-secondary {
   display: inline-block; padding: .4rem .8rem; font-size: .8rem; font-weight: 600;
-  text-decoration: none; color: #333333;
-  border: 2px solid #333333; border-radius: .375rem;
+  text-decoration: none; color: #b45309;
+  border: 2px solid #b45309; border-radius: .375rem;
   transition: all .25s ease;
 }
 .readmore .btn-secondary:hover {
-  background: #333333; color: #fff;
+  background: #b45309; color: #fff;
   transform: translateY(-1px);
 }
 .readmore .icon-chevron-right { display: none; }
@@ -351,10 +356,10 @@ mark { background: #f0f0f0; color: #555555; padding: .1em .3em; border-radius: .
   color: #1c1917; transition: all .2s ease;
 }
 .bf-pagination .page-link:hover {
-  background: #f0f0f0; border-color: #333333; color: #333333;
+  background: #f0f0f0; border-color: #b45309; color: #b45309;
 }
 .bf-pagination .active .page-link {
-  background: #333333; color: #fff; border-color: #333333;
+  background: #b45309; color: #fff; border-color: #b45309;
 }
 .bf-pagination .disabled .page-link { opacity: .3; pointer-events: none; }
 .pagination__wrapper { display: contents; }
@@ -372,7 +377,7 @@ mark { background: #f0f0f0; color: #555555; padding: .1em .3em; border-radius: .
 .com-contact input:focus,
 .com-contact textarea:focus,
 .com-contact select:focus {
-  border-color: #333333;
+  border-color: #b45309;
   outline: none;
   box-shadow: 0 0 0 3px rgba(51,51,51,.12);
 }
@@ -381,7 +386,7 @@ mark { background: #f0f0f0; color: #555555; padding: .1em .3em; border-radius: .
 .com-contact .btn-primary,
 .com-contact button[type="submit"] {
   display: inline-flex; padding: .65rem 1.5rem; font-weight: 600; font-size: .9rem;
-  background: #333333; color: #fff;
+  background: #b45309; color: #fff;
   border: none; border-radius: .375rem; cursor: pointer;
   transition: background .2s ease, transform .2s ease;
 }
@@ -394,11 +399,11 @@ mark { background: #f0f0f0; color: #555555; padding: .1em .3em; border-radius: .
 /* Footer — amber top accent mirroring header */
 .bf-footer {
   background: #fff;
-  border-top: 4px solid #333333;
+  border-top: 4px solid #b45309;
 }
 .bf-footer-bottom { color: #78716c; }
 .bf-footer a { color: #1c1917; text-decoration: none; }
-.bf-footer a:hover { color: #333333; }
+.bf-footer a:hover { color: #b45309; }
 .bf-footer .bf-module-title {
   font-size: .7rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: .06em; color: #78716c; margin-bottom: .75rem;

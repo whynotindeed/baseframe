@@ -11,6 +11,11 @@ html { font-size: 100% !important; }
   --bf-text-soft: #888;
   --bf-border: #e2e2e2;
   --bf-hover-bg: #e3f2fd;
+  --bf-topbar-hover: #1a9fff;
+  --bf-mark-bg: #e3f2fd;
+  --bf-mark-text: #1a9fff;
+  --bf-topbar-bg: #f0f7fe;
+  --bf-topbar-border: #dde9f5;
 }
 
 /* ---- Header -------------------------------------------------------- */
@@ -272,3 +277,21 @@ th { font-weight: 600; color: #333; }
   border-radius: .3rem; transition: background .15s;
 }
 .com-tags-tag__category .list-group-item h3 a:hover { background: #e3f2fd; color: #1a9fff; }
+
+/* ---- Kunena — Chota's .row and [class*="col-"] break Bootstrap grid ---- */
+#kunena .row {
+  margin-left: calc(-.5 * var(--bs-gutter-x, 1.5rem)) !important;
+  margin-right: calc(-.5 * var(--bs-gutter-x, 1.5rem)) !important;
+}
+#kunena [class*="col-"] {
+  margin: 0 !important;
+  padding-right: calc(var(--bs-gutter-x, 1.5rem) * .5);
+  padding-left: calc(var(--bs-gutter-x, 1.5rem) * .5);
+}
+#kunena .col-md-2 { flex: 0 0 auto; width: 16.6667%; }
+#kunena .col-md-10 { flex: 0 0 auto; width: 83.3333%; }
+#kunena .col-3 { flex: 0 0 auto; width: 25%; max-width: 25% !important; }
+/* Kunena SVG icons */
+#kunena svg { display: inline !important; height: 1em !important; }
+/* Kunena table text alignment */
+#kunena .table { text-align: left !important; }

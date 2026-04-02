@@ -11,6 +11,13 @@
   --bf-text-soft: #6c757d;
   --bf-border: #000000;
   --bf-hover-bg: #f7d51d;
+  --bf-topbar-bg: #1a1d20;
+  --bf-topbar-border: #000;
+  --bf-topbar-link: #6c757d;
+  --bf-topbar-hover: #f7d51d;
+  --bf-mark-bg: #f7d51d;
+  --bf-mark-text: #000000;
+  --bf-topbar-active: #92cc41;
 }
 
 /* ---- NES: show hamburger at 1024px (pixel font is wider) ---- */
@@ -18,7 +25,7 @@
   .bf-hamburger { display: flex !important; }
   .bf-nav {
     display: none !important;
-    position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+    position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
     padding: 1.5rem; z-index: 99; overflow-y: auto;
     background: #212529; border: 4px solid #000;
   }
@@ -63,6 +70,8 @@
 .bf-nav .mod-menu__sub { background: #212529; border: 4px solid #000; border-radius: 0; box-shadow: 8px 8px 0 #000; }
 .bf-nav .mod-menu__sub .nav-item > a { color: #e9ecef !important; font-family: 'Press Start 2P', monospace; font-size: .7rem; }
 .bf-nav .mod-menu__sub .nav-item > a:hover { background: #f7d51d; color: #000 !important; }
+.bf-nav .mod-menu__toggle-sub:hover { background: #f7d51d !important; color: #000 !important; }
+.bf-nav .mod-menu__toggle-sub:hover span { color: #000 !important; }
 .bf-nav .nav-item.current > a,
 .bf-nav .nav-item.active > a {
   background: #209cee;
@@ -199,6 +208,11 @@
 /* ---- Content — light text on dark bg, dark text inside white cards ---- */
 body.bf, .bf-content { color: #e9ecef !important; }
 body.bf p, body.bf li, body.bf small, body.bf span, body.bf time, body.bf a { color: #e9ecef; }
+/* Topbar — override global a color + smaller pixel font */
+.bf-topbar-link, .bf-topbar-active { font-size: .55rem !important; }
+.bf-topbar-link { color: #6c757d !important; }
+.bf-topbar-link:hover { color: #f7d51d !important; }
+.bf-topbar-active { color: #92cc41 !important; }
 /* White-interior elements get dark text */
 .bf-card, .bf-card *, .bf-card-body, .bf-card-body * { color: #000 !important; }
 .bf-card-title a { color: #000 !important; }
@@ -207,8 +221,16 @@ body.bf p, body.bf li, body.bf small, body.bf span, body.bf time, body.bf a { co
 .bf-card-date { color: #6c757d !important; }
 .bf-tag { color: #000 !important; }
 /* Sidebar modules — white bg, dark text */
-.bf-module, .bf-module * { color: #000 !important; }
+.bf-module, .bf-module *:not(.btn):not(.btn *) { color: #000 !important; }
+.bf-module .btn-primary { color: #fff !important; }
 .bf-module-title { color: #e76e55 !important; }
+/* Fix input backgrounds inside modules — NES dark theme leaks */
+.bf-module input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.bf-module textarea,
+.bf-module select {
+  background-color: #fff !important;
+  color: #000 !important;
+}
 .bf-sidebar .mod-articles-link { color: #000 !important; }
 /* Blockquote — light bg, dark text */
 blockquote, blockquote * { color: #000 !important; }
@@ -217,8 +239,11 @@ blockquote cite { color: #e76e55 !important; }
 details, details * { color: #000 !important; }
 details[open] summary, details[open] summary * { color: #fff !important; }
 /* Table — white bg, dark text */
-td, td * { color: #000 !important; }
-th, th * { color: #fff !important; }
+td:not(#kunena td), :not(#kunena) > table td, :not(#kunena) > table td * { color: #000 !important; }
+.com-content-category__table td, .com-content-category__table tbody th { color: #000 !important; }
+.com-content-category__table tbody th a { color: #209cee !important; }
+.com-content-category__table tbody th a:hover { color: #000 !important; }
+thead th, thead th * { color: #fff !important; }
 /* Footer — dark bg, light text */
 .bf-footer, .bf-footer * { color: rgba(255,255,255,.7) !important; }
 .bf-footer a { color: #92cc41 !important; }
@@ -297,7 +322,8 @@ th, th * { color: #fff !important; }
   background: #f7d51d; color: #000000;
 }
 .com-content-article__body a[role="button"].secondary {
-  background: #fff; color: #000000;
+  background: #fff !important; color: #000 !important;
+  border: 4px solid #000 !important;
 }
 
 /* Blockquote */
@@ -344,12 +370,12 @@ th, td {
   padding: .75rem 1rem; text-align: left;
   border: 4px solid #000000;
 }
-th {
+thead th {
   background: #209cee; color: #fff; font-weight: 700;
   font-family: 'Press Start 2P', monospace; font-size: .7rem;
 }
-td { background: #fff; }
-tr:nth-child(even) td { background: #f8f9fa; }
+td, tbody th { background: #fff; }
+tr:nth-child(even) td, tr:nth-child(even) th.list-title { background: #f8f9fa; }
 
 /* Tags (Joomla output) */
 .tags .btn-info {
@@ -382,6 +408,109 @@ tr:nth-child(even) td { background: #f8f9fa; }
 .bf-pagination .disabled .page-link { opacity: .3; pointer-events: none; }
 .pagination__wrapper { display: contents; }
 
+/* AcyMailing newsletter — dark theme overrides */
+#acym_wrapper,
+#acym_wrapper a,
+#acym_wrapper div,
+#acym_wrapper h1,
+#acym_wrapper h2,
+#acym_wrapper h3,
+#acym_wrapper p,
+#acym_wrapper span {
+  color: #e9ecef !important;
+}
+#acym_wrapper .acym__modal__handle {
+  color: #92cc41 !important;
+}
+#acym_wrapper .subbutton {
+  white-space: nowrap !important;
+  min-width: 160px !important;
+}
+/* Login icons — force black on yellow bg (sidebar + full page) */
+.com-users-login .input-group-text,
+.com-users-login .input-group-text *,
+.com-users-login .input-password-toggle,
+.com-users-login .input-password-toggle *,
+.com-users-registration .input-group-text,
+.com-users-registration .input-group-text *,
+.com-users-registration .input-password-toggle,
+.com-users-registration .input-password-toggle * {
+  color: #000 !important;
+}
+
+/* Sidebar login — both icons: slim borders + yellow bg */
+.bf-module .mod-login .input-group-text,
+.bf-module .mod-login .input-password-toggle {
+  background: #f7d51d !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  border-left: 0 !important;
+  border-radius: 0 !important;
+  margin-left: 0 !important;
+}
+.bf-module .mod-login .input-password-toggle span {
+  color: #000 !important;
+}
+/* Hide search icon in sidebar — pixel font is wide enough */
+.bf-module .btn .icon-search {
+  display: none !important;
+}
+#acym_wrapper .acym__modal__handle:hover {
+  color: #f7d51d !important;
+}
+#acym_wrapper .acym__front__archive__newsletter_sending-date {
+  color: #999 !important;
+}
+#acym_wrapper .pagination_border_left,
+#acym_wrapper .pagination_border_right {
+  border-color: #444 !important;
+}
+#acym_wrapper .pagination_one_pagination {
+  border-color: #444 !important;
+}
+#acym_wrapper .pagination_container i {
+  color: #e9ecef !important;
+}
+
+/* Article body links — invisible on dark bg */
+.com-content-article__body a:not([role="button"]) {
+  color: #92cc41 !important;
+}
+.com-content-article__body a:not([role="button"]):hover {
+  color: #f7d51d !important;
+}
+/* Article body buttons — ensure white on colored bg, black on hover yellow */
+.com-content-article__body a[role="button"] {
+  color: #fff !important;
+}
+.com-content-article__body a[role="button"]:hover {
+  color: #000 !important;
+}
+
+/* Categories page — links invisible on dark bg */
+.com-content-categories__item-title a {
+  color: #e9ecef !important;
+}
+.com-content-categories__item-title a:hover {
+  color: #92cc41 !important;
+}
+.com-content-categories__description {
+  color: #999 !important;
+}
+/* Category item borders — dark theme */
+.com-content-categories__item {
+  border-bottom-color: #444 !important;
+}
+
+/* All content inputs — dark theme needs white bg + black text */
+.bf-content input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="reset"]),
+.bf-content textarea,
+.bf-content select:not(.form-select) {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-color: #000 !important;
+}
+
 /* Contact form */
 .com-contact input[type="text"], .com-contact input[type="email"],
 .com-contact textarea, .com-contact select {
@@ -391,6 +520,23 @@ tr:nth-child(even) td { background: #f8f9fa; }
 }
 .com-contact input:focus, .com-contact textarea:focus, .com-contact select:focus {
   border-color: #209cee; outline: none;
+}
+/* Global btn-primary — visible on dark NES bg */
+.btn-primary {
+  background: #92cc41 !important;
+  color: #000 !important;
+  border: 4px solid #000 !important;
+  border-radius: 0 !important;
+}
+.btn-primary:hover {
+  background: #f7d51d !important;
+  color: #000 !important;
+}
+.btn-secondary, .input-password-toggle {
+  background: #333 !important;
+  color: #e9ecef !important;
+  border: 4px solid #000 !important;
+  border-radius: 0 !important;
 }
 .control-group { margin-bottom: 1rem; }
 .control-label label { display: block; margin-bottom: .4rem; font-weight: 700; font-size: .9rem; }
@@ -471,6 +617,9 @@ tr:nth-child(even) td { background: #f8f9fa; }
 #kunena .started, #kunena .replies, #kunena .views, #kunena .datepost,
 #kunena .lastpostby, #kunena .ktopic-category { color: #999 !important; }
 #kunena .kwho-user { color: #92cc41 !important; }
+#kunena .mod-kunena-breadcrumbs.breadcrumb a,
+#kunena .mod-kunena-breadcrumbs.breadcrumb a span,
+#kunena .mod-kunena-breadcrumbs.breadcrumb .breadcrumb-item a { color: #92cc41 !important; }
 #kunena .text-muted { color: #999 !important; }
 #kunena > nav.navbar {
   background: #2a2a2a !important;
@@ -482,7 +631,17 @@ tr:nth-child(even) td { background: #f8f9fa; }
   color: #e9ecef !important;
   border-color: #e9ecef !important;
 }
+#kunena .btn-outline-primary:hover,
+#kunena .btn-outline-success:hover,
+#kunena .btn-outline-secondary:hover {
+  background: #f7d51d !important;
+  color: #000 !important;
+  border-color: #000 !important;
+}
 #kunena .btn-light { background: #333 !important; color: #e9ecef !important; border-color: #e9ecef !important; }
+#kunena .btn-link,
+#kunena .row.message .btn-link,
+.bf-content #kunena a.btn-link { color: #92cc41 !important; }
 #kunena .dropdown-menu {
   background: #2a2a2a !important;
   border: 4px solid #e9ecef !important;
@@ -492,7 +651,20 @@ tr:nth-child(even) td { background: #f8f9fa; }
   color: #e9ecef !important;
   border: 4px solid #e9ecef !important;
 }
-#kunena .profilebox li { color: #999 !important; }
+#kunena .dropdown-menu,
+#kunena .dropdown-menu *:not(.btn):not(.btn *) {
+  color: #e9ecef !important;
+}
+#kunena .dropdown-menu .input-group-text,
+#kunena .dropdown-menu .input-group-text svg,
+#kunena .dropdown-menu .input-group-text svg path,
+#kunena .dropdown-menu .input-group-text:not(.btn):not(.btn *) {
+  color: #000 !important;
+  fill: #000 !important;
+}
+#kunena .profilebox li,
+#kunena .profile-expand li { color: #999 !important; padding: .3rem 0; }
+#kunena.layout .topic-starter { border-color: #444 !important; color: #209cee !important; font-size: 6px !important; }
 #kunena .profilebox .badge { background: #333 !important; border: 2px solid #e9ecef !important; }
 #kunena .topic-item-messages .col-md-2 { border-color: #e9ecef !important; }
 #kunena .topic-item-messages .row.message { border-bottom-color: #444 !important; }
@@ -503,5 +675,20 @@ tr:nth-child(even) td { background: #f8f9fa; }
 #kunena .pagination .page-item.active .page-link { background: #e76e55 !important; border-color: #e76e55 !important; color: #fff !important; }
 #kunena .pagination .page-link { color: #e9ecef !important; border-color: #e9ecef !important; }
 #kunena + div a { color: #999 !important; }
+#kunena + div a:hover { color: #f7d51d !important; }
 #kunena #kstats li, #kunena #kwho li { color: #ccc !important; }
 #kunena #kstats strong { color: #92cc41 !important; }
+
+/* ---- Framework switcher — fix NES dark theme ---- */
+.bf-fw-page-link {
+  background: rgba(255,255,255,.08) !important;
+  color: #ccc !important;
+  border-color: rgba(255,255,255,.15) !important;
+}
+.bf-fw-page-link:hover {
+  background: rgba(255,255,255,.15) !important;
+  color: #fff !important;
+}
+.bf-fw-type {
+  color: #999 !important;
+}

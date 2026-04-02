@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
+  // Dropdown submenu toggle (for both Joomla menu and PHP-rendered nav)
+  document.querySelectorAll(".mod-menu__toggle-sub").forEach(function(btn) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      var parent = btn.closest(".nav-item");
+      var sub = parent ? parent.querySelector(".mod-menu__sub") : null;
+      if (!sub) return;
+      var isOpen = sub.getAttribute("aria-hidden") === "false";
+      sub.setAttribute("aria-hidden", isOpen ? "true" : "false");
+      btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+    });
+  });
+
   // Mobile menu toggle
   var hamburger = document.getElementById('bf-hamburger');
   var nav = document.getElementById('bf-nav');
@@ -38,6 +51,19 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
       btt.classList.toggle('is-visible', window.scrollY > 400);
     });
+    // Keep back-to-top above footer
+    var footer = document.querySelector(".bf-footer");
+    if (footer) {
+      window.addEventListener("scroll", function() {
+        var footerRect = footer.getBoundingClientRect();
+        var viewH = window.innerHeight;
+        if (footerRect.top < viewH) {
+          btt.style.bottom = (viewH - footerRect.top + 16) + "px";
+        } else {
+          btt.style.bottom = "2rem";
+        }
+      });
+    }
     btt.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });

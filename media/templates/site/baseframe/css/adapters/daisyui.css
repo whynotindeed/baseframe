@@ -12,6 +12,11 @@
   --bf-text-soft: #9ca3af;
   --bf-border: #e5e7eb;
   --bf-hover-bg: #f3f4f6;
+  --bf-topbar-hover: #661AE6;
+  --bf-mark-bg: #ede0ff;
+  --bf-mark-text: #661AE6;
+  --bf-topbar-bg: #f5f0fe;
+  --bf-topbar-border: #e8ddf5;
 }
 
 body.bf {

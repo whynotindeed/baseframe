@@ -11,6 +11,11 @@
   --bf-text-soft: #929292;
   --bf-border: #efefef;
   --bf-hover-bg: #e0f2ed;
+  --bf-topbar-hover: #009578;
+  --bf-mark-bg: #e0f2ed;
+  --bf-mark-text: #009578;
+  --bf-topbar-bg: #f0f8f6;
+  --bf-topbar-border: #ddeee9;
 }
 
 /* ---- Override MVP.css element-level styles that conflict with BaseFrame ---- */
@@ -18,9 +23,24 @@
    We override only the conflicting properties, not `all: revert`. */
 .bf header { margin-bottom: 0; padding: 0; }
 .bf nav { margin-bottom: 0; justify-content: flex-end; }
+#kunena nav, nav.mod-breadcrumbs__wrapper { justify-content: flex-start !important; }
 .bf article { margin: 0; padding: 0; }
 .bf section { margin: 0; padding: 0; }
 .bf footer { margin: 0; padding: 0; }
+
+/* MVP button/input resets for input-groups and forms */
+.input-group .btn, .input-group button { margin: 0 !important; padding: .5rem 1rem !important; }
+.input-group input, .bf-sidebar input { margin-bottom: 0 !important; }
+.bf-sidebar form, #kunena form, .bf-content form { border: none !important; box-shadow: none !important; padding: 0 !important; min-width: 0 !important; max-width: none !important; }
+.bf-content table, #kunena table { display: table !important; }
+
+/* MVP thead has blue background — kill it for Kunena */
+#kunena table thead { background: transparent !important; color: var(--bf-text, #333) !important; }
+#kunena table thead td, #kunena table thead th { color: var(--bf-text, #333) !important; }
+
+/* MVP a { display: inline-block } breaks bf-fw-btn flex layout */
+.bf-fw-btn { display: flex !important; }
+.bf-fw-page-link { display: inline !important; }
 .bf main { margin: 0; padding: 0; max-width: none; }
 .bf header { max-width: none !important; width: 100% !important; }
 .bf a { display: inline; font-weight: inherit; text-decoration: none; }
@@ -227,6 +247,7 @@ blockquote {
   background: #f9f9f9; border-left: 4px solid #009578;
   border-radius: 0 .35rem .35rem 0;
   padding: 1.5rem 2rem; margin: 1.5rem 0; font-style: italic;
+  font-size: inherit !important; line-height: inherit !important; max-width: none !important;
 }
 blockquote footer { font-style: normal; margin-top: .75rem; background: none; padding: 0; }
 blockquote cite { font-weight: 600; color: #1a1a2e; }
@@ -255,6 +276,7 @@ code {
 table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
 th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid #efefef; }
 th { background: #f9f9f9; color: #1a1a2e; font-weight: 600; }
+.com-content-category__table tbody th { background: transparent !important; }
 
 /* Tags (Joomla output) */
 .tags .btn-info {
