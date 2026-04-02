@@ -331,8 +331,8 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
         <p>BaseFrame for Joomla is free and open source under the <strong>MIT License</strong>. Use it however you want &mdash; personal, commercial, no restrictions.</p>
         <div class="bf-home-cta">
             <a href="https://github.com/whynotindeed/baseframe" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-primary">View on GitHub</a>
-            <a href="https://github.com/whynotindeed/baseframe/releases/latest" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-primary">Download ZIP</a>
-            <a href="https://github.com/whynotindeed/baseframe#demo-content" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-secondary">Demo Content</a>
+            <a href="https://go.claudejoomla.com/baseframe.zip" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-primary">Download ZIP</a>
+            <a href="https://go.claudejoomla.com/demo-content" target="_blank" rel="noopener" class="bf-home-cta-btn bf-home-cta-secondary">Demo Content</a>
         </div>
         </section>
     </div>

@@ -32,11 +32,19 @@
 .input-group .btn, .input-group button { margin: 0 !important; padding: .5rem 1rem !important; }
 .input-group input, .bf-sidebar input { margin-bottom: 0 !important; }
 .bf-sidebar form, #kunena form, .bf-content form { border: none !important; box-shadow: none !important; padding: 0 !important; min-width: 0 !important; max-width: none !important; }
-.bf-content table, #kunena table { display: table !important; }
+.bf-content table, #kunena table { display: table !important; white-space: normal !important; }
 
 /* MVP thead has blue background — kill it for Kunena */
 #kunena table thead { background: transparent !important; color: var(--bf-text, #333) !important; }
 #kunena table thead td, #kunena table thead th { color: var(--bf-text, #333) !important; }
+#kunena table tr:nth-child(2n) { background-color: transparent !important; }
+#kunena table tr:nth-child(2n) td { background-color: transparent !important; }
+
+/* Kunena dropdown — reset MVP's aggressive font styling */
+#kunena .dropdown-menu { font-weight: 400 !important; font-size: .85rem !important; }
+#kunena .dropdown-menu p { font-weight: 400 !important; }
+#kunena .dropdown-menu a { font-weight: 400 !important; font-size: .85rem !important; color: var(--bf-accent, #009578) !important; }
+#kunena .dropdown-menu label { font-weight: 400 !important; font-size: .85rem !important; }
 
 /* MVP a { display: inline-block } breaks bf-fw-btn flex layout */
 .bf-fw-btn { display: flex !important; }

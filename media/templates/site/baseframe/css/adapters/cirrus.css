@@ -47,7 +47,8 @@
   content: ''; position: absolute; bottom: -.25rem; left: 0; right: 0;
   height: 2px; background: #f03d4d; border-radius: 1px;
 }
-.bf-hamburger span { background: #495057; }
+.bf-hamburger { margin: 0 !important; padding: .5rem !important; line-height: normal !important; min-width: auto !important; border: none !important; }
+.bf-hamburger span { background: #495057; margin: 0 !important; }
 
 @media (max-width: 768px) {
   .bf-nav { background: #fff; }
@@ -264,6 +265,7 @@ tr:nth-child(even) td { background: #fafbfc; }
   text-transform: uppercase; letter-spacing: .03em; text-decoration: none;
   background: #fde8ea; color: #f03d4d;
   border-radius: .2rem; border: none;
+  margin: 0 !important; line-height: 1.5 !important; min-width: auto !important; overflow: visible !important;
 }
 .tags .btn-info:hover { background: #f03d4d; color: #fff; }
 
