@@ -194,10 +194,10 @@ if ($fw['lib'] || $fw['cdn']) {
     if ($libUrl) $this->addStyleSheet($libUrl);
 }
 $this->addStyleSheet('/media/system/css/joomla-fontawesome.min.css');
-$this->addStyleSheet($mediaBase . '/css/base.css?v=6');
+$this->addStyleSheet($mediaBase . '/css/base.css?v=11');
 $this->addStyleSheet($mediaBase . '/css/' . $fw['css'] . '?v=5');
 $this->addStyleSheet($mediaBase . '/css/custom.css?v=2');
-$this->addScript($mediaBase . '/js/baseframe.js?v=2', [], ['defer' => true]);
+$this->addScript($mediaBase . '/js/baseframe.js?v=3', [], ['defer' => true]);
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" data-framework="<?php echo htmlspecialchars($framework, ENT_QUOTES, 'UTF-8'); ?>" data-theme="<?php echo $framework === 'halfmoon' ? 'dark' : 'light'; ?>">

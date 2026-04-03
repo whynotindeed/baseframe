@@ -69,6 +69,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Topbar scroll — adjust nav offset when topbar scrolls out of view
+  var topbar = document.querySelector('.bf-topbar');
+  if (topbar) {
+    var header = document.getElementById('bf-header');
+    var updateNavTop = function() {
+      var headerH = header ? header.offsetHeight : 64;
+      var topbarBottom = topbar.getBoundingClientRect().bottom;
+      if (topbarBottom <= 0) {
+        document.body.style.setProperty('--bf-nav-top', headerH + 'px');
+      } else {
+        document.body.style.setProperty('--bf-nav-top', (headerH + topbarBottom) + 'px');
+      }
+    };
+    window.addEventListener('scroll', updateNavTop, { passive: true });
+    updateNavTop();
+  }
+
   // Card block links — make entire card clickable
   document.querySelectorAll('.bf-card').forEach(function(card) {
     var link = card.querySelector('.bf-card-title a') || card.querySelector('.bf-card-readmore');

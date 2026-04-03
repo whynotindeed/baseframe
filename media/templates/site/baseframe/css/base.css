@@ -70,8 +70,7 @@ body.bf {
   justify-content: space-between;
   height: 64px;
 }
-/* When topbar is present, offset the mobile nav down */
-body:has(.bf-topbar) { --bf-nav-top: 92px; }
+/* --bf-nav-top is set dynamically by baseframe.js when topbar is present */
 .bf-topbar {
   background: var(--bf-topbar-bg, var(--bf-bg, #fff));
   border-bottom: none;
@@ -148,6 +147,7 @@ body:has(.bf-topbar) { --bf-nav-top: 92px; }
   border: none;
   cursor: pointer;
   padding: .5rem;
+  margin-top: -2px;
 }
 .bf-hamburger span {
   display: block;
@@ -359,6 +359,7 @@ h6 { font-size: .875rem; font-weight: 600; line-height: 1.4; margin-bottom: .5re
 /* Article info — show only published date by default */
 .article-info-term { display: none; }
 .article-info dd { margin: 0; }
+.article-info .icon-fw { vertical-align: middle; position: relative; top: -4px; }
 .article-info .createdby { display: none; }
 .article-info .category-name { display: none; }
 .article-info .hits { display: none; }
@@ -372,6 +373,7 @@ h6 { font-size: .875rem; font-weight: 600; line-height: 1.4; margin-bottom: .5re
 .item-content > hr#system-readmore { display: none; }
 
 /* Contact form cleanup — hide Joomla cruft */
+.form-group { margin-bottom: .75rem; }
 .form-horizontal { display: block; }
 .form-horizontal .controls { margin-left: 0; }
 .com-contact button[type="submit"] { margin-top: .75rem; }
@@ -784,6 +786,7 @@ ol.mod-breadcrumbs {
   align-items: center;
   gap: .5rem;
   min-height: 1.5rem;
+  padding-left: .25rem;
 }
 .form-check .form-check-label {
   margin: 0;

@@ -11,7 +11,7 @@
   --bf-text-soft: #6c757d;
   --bf-border: #000000;
   --bf-hover-bg: #f7d51d;
-  --bf-topbar-bg: #1a1d20;
+  --bf-topbar-bg: #212529;
   --bf-topbar-border: #000;
   --bf-topbar-link: #6c757d;
   --bf-topbar-hover: #f7d51d;
@@ -20,7 +20,7 @@
   --bf-topbar-active: #92cc41;
 }
 
-body:has(.bf-topbar) { --bf-nav-top: 96px; }
+/* --bf-nav-top set dynamically by baseframe.js */
 
 /* ---- NES: show hamburger at 1024px (pixel font is wider) ---- */
 @media (max-width: 1024px) {
@@ -46,6 +46,7 @@ body:has(.bf-topbar) { --bf-nav-top: 96px; }
   background: #212529;
   border-bottom: 4px solid #e76e55;
 }
+.bf-logo { align-items: baseline; }
 .bf-logo-label {
   color: #e76e55;
   font-family: 'Press Start 2P', monospace;
