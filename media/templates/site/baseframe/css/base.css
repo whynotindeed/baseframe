@@ -81,7 +81,6 @@ body:has(.bf-topbar) { --bf-nav-top: 92px; }
   justify-content: flex-end;
   align-items: center;
   gap: 1.25rem;
-  height: 28px;
 }
 .bf-topbar-link {
   font-size: .72rem;
@@ -135,7 +134,6 @@ body:has(.bf-topbar) { --bf-nav-top: 92px; }
   display: flex;
   align-items: center;
   padding: .5rem .75rem;
-  font-size: .9rem;
   font-weight: 500;
   text-decoration: none;
   transition: all .15s;
@@ -173,7 +171,6 @@ body:has(.bf-topbar) { --bf-nav-top: 92px; }
   align-items: center;
   /* Match .bf-nav .nav-item > a padding/font — adapters override both */
   padding: .5rem .75rem;
-  font-size: .9rem;
   font-weight: 500;
   cursor: pointer;
   background: none;
@@ -304,8 +301,6 @@ body:has(.bf-topbar) { --bf-nav-top: 92px; }
 .icon-chevron-right::before      { content: '\203A'; }
 
 /* Page title — covers both .page-header h1 and bare h1 in component views */
-h1 { font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
-h2 { font-size: 1.5rem; font-weight: 700; line-height: 1.25; margin-bottom: .75rem; }
 h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.3; margin-bottom: .5rem; }
 h4 { font-size: 1.1rem; font-weight: 600; line-height: 1.35; margin-bottom: .5rem; }
 h5 { font-size: 1rem; font-weight: 600; line-height: 1.4; margin-bottom: .5rem; }
@@ -327,7 +322,6 @@ h6 { font-size: .875rem; font-weight: 600; line-height: 1.4; margin-bottom: .5re
 }
 
 /* Form inline layout (used by archive, newsfeeds filters) */
-.form-inline { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: 1rem; }
 .form-inline .me-2 { display: contents; }
 
 /* Newsfeeds specific — hide raw URL, style feed list */
@@ -345,13 +339,11 @@ h6 { font-size: .875rem; font-weight: 600; line-height: 1.4; margin-bottom: .5re
 .com-newsfeeds-category__category .list-group-item .list-title a:hover { color: var(--bf-accent, #666); }
 .com-newsfeeds-category__category .list-group-item .list:nth-child(3) { font-size: .85rem; color: var(--bf-text-soft, #888); }
 .com-newsfeeds-category__category .list-group-item br { display: none; }
-.com-newsfeeds-category__description { font-size: .9rem; color: var(--bf-text-soft, #888); margin-bottom: 1.5rem; }
 .com-newsfeeds-category__description .clr { display: none; }
 
 /* Article body headings — safety net if adapter doesn't set them */
 .com-content-article__body h2 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 .5rem; }
 .com-content-article__body h3 { font-size: 1.25rem; font-weight: 600; margin: 1rem 0 .4rem; }
-.com-content-article__body p { margin-bottom: 1rem; }
 .com-content-article__body section + section { margin-top: 2rem; padding-top: 1.5rem; }
 
 /* Article image */
@@ -361,7 +353,6 @@ h6 { font-size: .875rem; font-weight: 600; line-height: 1.4; margin-bottom: .5re
 }
 
 /* Article info — show only published date by default */
-.article-info { display: flex; flex-wrap: wrap; gap: .5rem; font-size: .85rem; margin-bottom: 1rem; }
 .article-info-term { display: none; }
 .article-info dd { margin: 0; }
 .article-info .createdby { display: none; }
@@ -449,7 +440,6 @@ figcaption {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  font-size: .9rem;
 }
 .com-content-article__body th,
 .com-content-article__body td {
@@ -482,7 +472,6 @@ figcaption {
   height: 180px;
   object-fit: cover;
   border-radius: inherit;
-  margin-bottom: .75rem;
 }
 
 /* Code inline */
@@ -527,6 +516,13 @@ details > *:not(summary):first-of-type { padding-top: .75rem; }
   opacity: 1;
   visibility: visible;
 }
+
+@media (max-width: 768px) {
+  .bf-back-to-top {
+    display: none !important;
+  }
+}
+
 .bf-back-to-top:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,.2);
@@ -623,7 +619,6 @@ select.form-select,
   display: flex;
   gap: .5rem;
   align-items: center;
-  margin-bottom: 1rem;
 }
 .btn-group .inputbox {
   flex: 1;
@@ -633,7 +628,6 @@ select.form-select,
   display: flex;
   align-items: center;
   gap: .5rem;
-  margin-bottom: 1rem;
 }
 .btn-group.float-end select { width: auto; min-width: 80px; }
 /* Hide Display # dropdown (the one with the select), keep pagination nav */
@@ -772,15 +766,12 @@ ol.mod-breadcrumbs {
 
 /* ─── Search page specific ────────────────────────────────── */
 .com-finder .form-inline {
-  margin-bottom: 1rem;
 }
 .com-finder .form-inline label {
   font-weight: 600;
-  font-size: .9rem;
   margin-bottom: .4rem;
 }
 .com-finder__tips.card { margin-bottom: 1.5rem; }
-.com-finder__tips .card-body { font-size: .9rem; line-height: 1.6; }
 .com-finder__tips .card-body p + p { margin-top: .5rem; }
 
 /* ─── Form check (checkboxes/radios) ─────────────────────── */
@@ -834,7 +825,6 @@ input[type="radio"] { border-radius: 50%; }
   gap: .5rem 1.5rem;
 }
 .fields-container .field-entry {
-  font-size: .9rem;
 }
 .fields-container .field-label {
   font-weight: 600;
@@ -848,7 +838,6 @@ input[type="radio"] { border-radius: 50%; }
   font-size: .95rem;
 }
 .com-content-category__table thead th {
-  font-size: .75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .04em;
@@ -965,11 +954,9 @@ p.com-content-category__counter.counter.float-end {
   font-weight: 600;
   color: var(--bf-text, #333);
   line-height: 1.4;
-  margin-bottom: 1rem;
 }
 .com-users-reset legend,
 .com-users-remind legend {
-  font-size: .9rem;
   font-weight: 400;
   color: var(--bf-text-soft, #666);
 }
@@ -986,7 +973,6 @@ p.com-content-category__counter.counter.float-end {
 .com-users-profile .control-group,
 .com-users-reset .control-group,
 .com-users-remind .control-group {
-  margin-bottom: 1rem;
 }
 .com-users-login label,
 .com-users-registration label,
@@ -994,7 +980,6 @@ p.com-content-category__counter.counter.float-end {
   display: block;
   margin-bottom: .4rem;
   font-weight: 600;
-  font-size: .9rem;
 }
 .com-users-login input[type="text"],
 .com-users-login input[type="password"],
@@ -1031,7 +1016,6 @@ p.com-content-category__counter.counter.float-end {
   display: inline-flex;
   padding: .625rem 1.25rem;
   font-weight: 600;
-  font-size: .9rem;
   border-radius: .375rem;
   cursor: pointer;
   transition: all .15s;
@@ -1093,7 +1077,6 @@ p.com-content-category__counter.counter.float-end {
   color: var(--bf-accent, #666);
 }
 .com-finder__results-list li p {
-  font-size: .9rem;
   color: var(--bf-text-soft, #666);
   margin: 0;
 }
@@ -1117,14 +1100,12 @@ p.com-content-category__counter.counter.float-end {
   text-decoration: none;
 }
 .com-newsfeeds-newsfeed__items .feed-link a:hover { color: var(--bf-accent, #666) !important; }
-.com-newsfeeds-newsfeed__items .feed-item-description { font-size: .9rem; line-height: 1.6; color: var(--bf-text-soft, #555); }
 .com-newsfeeds-newsfeed__items .feed-item-description img { border-radius: .5rem; margin-bottom: .5rem; }
 .com-newsfeeds-newsfeed__items .feed-item-description a { color: var(--bf-accent, #666); }
 /* Feed title */
 .com-newsfeeds-newsfeed > h2 { font-size: 1.5rem !important; font-weight: 700 !important; margin-bottom: .5rem; }
 .com-newsfeeds-newsfeed > h2 a { color: var(--bf-text, #333) !important; text-decoration: none; }
 .com-newsfeeds-newsfeed > h2 a:hover { color: var(--bf-accent, #666) !important; }
-.feed-description { font-size: .9rem; color: var(--bf-text-soft, #888); margin-bottom: 1rem; }
 .newsfeed-item {
   padding: 1rem 0;
   border-bottom: 1px solid var(--bf-border, #e5e5e5);
@@ -1149,7 +1130,6 @@ p.com-content-category__counter.counter.float-end {
   color: var(--bf-accent, #666);
 }
 .com-content-categories__description {
-  font-size: .9rem;
   color: var(--bf-text-soft, #666);
   margin-top: .25rem;
 }
@@ -1190,7 +1170,6 @@ p.com-content-category__counter.counter.float-end {
 }
 
 /* Login module in sidebar */
-.bf-sidebar .mod-login .form-group { margin-bottom: .75rem; }
 .bf-sidebar .mod-login .input-group { display: flex; }
 .bf-sidebar .mod-login .input-group .form-control { flex: 1; border-radius: .375rem 0 0 .375rem; }
 .bf-sidebar .mod-login .input-group .btn,
@@ -1310,7 +1289,6 @@ p.com-content-category__counter.counter.float-end {
 #kunena .category h3 { font-size: 1.05rem; margin: 0; }
 #kunena .category h3 a { color: var(--bf-text, #333) !important; text-decoration: none; font-weight: 600; }
 #kunena .category h3 a:hover { color: var(--bf-accent, #666) !important; }
-#kunena .category h3 small { font-size: .75rem; color: var(--bf-text-soft, #888); font-weight: 400; margin-left: .5rem; }
 #kunena .header-desc { font-size: .85rem; color: var(--bf-text-soft, #888); margin-top: .25rem; }
 
 /* Category home — last post info */
@@ -1318,10 +1296,8 @@ p.com-content-category__counter.counter.float-end {
 #kunena .lastpostlink { font-size: .85rem; }
 #kunena .lastpostby { font-size: .8rem; color: var(--bf-text-soft, #888); }
 #kunena .lastpostby a { color: var(--bf-accent, #666) !important; }
-#kunena #kcat-last .datepost { font-size: .75rem; color: var(--bf-text-soft, #aaa); }
 
 /* bg-faded — Bootstrap 3 remnant, no definition */
-#kunena .bg-faded { background: transparent !important; border-radius: .25rem; font-size: .9rem; color: var(--bf-text-soft, #888); }
 
 /* Kunena navbar — simplify */
 #kunena > nav.navbar {
@@ -1350,7 +1326,6 @@ p.com-content-category__counter.counter.float-end {
   padding: 1rem;
   min-width: 280px;
 }
-#kunena .dropdown-menu .form-group { margin-bottom: .75rem; }
 #kunena .dropdown-menu .form-control {
   border: 1px solid var(--bf-border, #e5e5e5);
   border-radius: .375rem;
@@ -1394,12 +1369,10 @@ p.com-content-category__counter.counter.float-end {
 #kunena .topictitle:hover { color: var(--bf-accent, #666); }
 #kunena .started { font-size: .8rem; color: var(--bf-text-soft, #888); margin-top: .25rem; }
 #kunena .started a { color: var(--bf-accent, #666); }
-#kunena .ktopic-category { font-size: .75rem; color: var(--bf-text-soft, #aaa); }
 #kunena .replies, #kunena .views { font-size: .8rem; color: var(--bf-text-soft, #888); }
 #kunena .repliesnum, #kunena .viewsnum { font-weight: 600; margin-left: .25rem; }
 #kunena .lastpostlink { font-size: .8rem; }
 #kunena .lastpostlink a { color: var(--bf-accent, #666); }
-#kunena .datepost { font-size: .75rem; color: var(--bf-text-soft, #aaa); }
 #kunena #klastpostphone { font-size: .8rem; margin-top: .5rem; color: var(--bf-text-soft, #888); }
 #kunena #klastpostphone a { color: var(--bf-accent, #666); }
 
@@ -1418,7 +1391,6 @@ p.com-content-category__counter.counter.float-end {
 /* Log in / Create account prompt at bottom of topic */
 #kunena .topic-item-messages > p,
 #kunena .col-md-10 > p {
-  font-size: .9rem;
   padding: 1rem 1.5rem;
   color: var(--bf-text-soft, #888);
 }
@@ -1504,8 +1476,6 @@ p.com-content-category__counter.counter.float-end {
   border: 1px solid var(--bf-border, #e5e5e5);
   border-radius: .5rem;
 }
-#kunena form#postform .form-group.row { margin-bottom: .75rem; }
-#kunena form#postform .col-form-label { font-weight: 600; font-size: .9rem; }
 #kunena .dropzone .default.message {
   color: var(--bf-text-soft, #888) !important;
   font-size: .85rem;
@@ -1519,7 +1489,6 @@ p.com-content-category__counter.counter.float-end {
 }
 #kunena .nav-tabs .nav-link {
   color: var(--bf-text-soft, #888);
-  font-size: .9rem;
   border: 1px solid transparent;
   padding: .5rem 1rem;
 }
@@ -1559,7 +1528,6 @@ p.com-content-category__counter.counter.float-end {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -1664,7 +1632,6 @@ p.com-content-category__counter.counter.float-end {
   padding: .75rem;
 }
 #kunena .kspoiler-content {
-  font-size: .9rem;
   color: var(--bf-text, #333);
 }
 
@@ -1793,7 +1760,6 @@ p.com-content-category__counter.counter.float-end {
   padding: .5rem .75rem;
   border: 1px solid var(--bf-border, #e5e5e5);
   border-radius: .375rem;
-  font-size: .9rem;
 }
 #kunena .kloginform .add-on {
   display: inline-flex;
@@ -1822,7 +1788,6 @@ p.com-content-category__counter.counter.float-end {
 }
 
 /* "Powered by Kunena Forum" — lives outside #kunena as a sibling div */
-#kunena + div { font-size: .75rem; color: var(--bf-text-soft, #aaa); margin-top: 1rem; }
 #kunena + div a { color: var(--bf-text-soft, #aaa) !important; text-decoration: none !important; }
 #kunena + div a:hover { color: var(--bf-accent, #666) !important; }
 
@@ -1914,11 +1879,9 @@ p.com-content-category__counter.counter.float-end {
   background: none;
 }
 #kunena .modal-body .card-footer small {
-  font-size: .75rem;
   color: var(--bf-text-soft, #888);
   flex: 1;
 }
-#kunena .modal-body .form-group { margin-bottom: .75rem; }
 #kunena .modal-body label,
 #kunena .modal-body .control-label {
   font-size: .85rem;
@@ -1956,7 +1919,6 @@ p.com-content-category__counter.counter.float-end {
   padding: 0 !important;
 }
 #kunena .profile-expand .content li {
-  font-size: .75rem;
   color: var(--bf-text-soft, #888);
   line-height: 1.4;
   padding: .25rem 0;
@@ -1968,7 +1930,6 @@ p.com-content-category__counter.counter.float-end {
   #kunena .kfrontend { padding: .75rem !important; }
   #kunena .card-header { font-size: 1.1rem; }
   #kunena .kunena-topic-item h1 { font-size: 1.2rem; }
-  #kunena .topic-item-messages .col-md-2 { margin-bottom: 1rem; }
 }
 
 /* ─── AcyMailing archive ──────────────────────────────────── */
@@ -1998,13 +1959,11 @@ p.com-content-category__counter.counter.float-end {
 #acym_wrapper .acym__front__archive__newsletter_sending-date {
   font-size: .8rem !important;
   color: var(--bf-text-soft, #999) !important;
-  padding-bottom: .75rem;
   border-bottom: 1px solid var(--bf-border, #e5e5e5);
   margin-bottom: 0 !important;
 }
 /* Search bar */
 #acym_wrapper #acym__front__archive__search {
-  margin-bottom: 1rem;
   gap: .5rem;
 }
 #acym_wrapper #acym__front__archive__search input {
@@ -2044,7 +2003,6 @@ p.com-content-category__counter.counter.float-end {
 #phocagallery .pg-csv-name a { font-weight: 600; font-size: 1.05rem; color: var(--bf-text, #333); }
 #phocagallery .pg-csv-name a:hover { color: var(--bf-accent, #666); }
 #phocagallery .pg-csv-count { font-size: .8rem; color: var(--bf-text-soft, #888); }
-#phocagallery .pg-csv-descr { font-size: .9rem; color: var(--bf-text-soft, #666); margin-top: .25rem; }
 
 /* Sidebar content links */
 .bf-sidebar .mod-custom a,
@@ -2176,7 +2134,6 @@ p.com-content-category__counter.counter.float-end {
 .bf-fw-btn.active .bf-fw-type { color: rgba(255,255,255,.7); }
 .bf-fw-name {
   font-weight: 600;
-  font-size: .9rem;
   line-height: 1.2;
 }
 .bf-fw-type {
@@ -2353,7 +2310,6 @@ label.invalid .form-control-feedback { display: none !important; }
 
 /* Homepage hero styling */
 .bf-home-hero { margin-bottom: 1.5rem; }
-.bf-home-hero h1 { margin-bottom: .75rem; }
 .bf-home-hero .lead {
   font-size: 1.15rem;
   line-height: 1.7;
@@ -2362,11 +2318,8 @@ label.invalid .form-control-feedback { display: none !important; }
 }
 
 /* Homepage bottom content */
-.bf-home-bottom-wrap { padding-top: 2.5rem; padding-bottom: 1rem; }
 .bf-home-bottom { max-width: 800px; }
-.bf-home-bottom h2 { margin-top: 2rem; margin-bottom: .75rem; }
 .bf-home-bottom h2:first-child { margin-top: 0; }
-.bf-home-bottom p { margin-bottom: 1rem; line-height: 1.7; color: var(--bf-text-soft, #666); }
 .bf-home-bottom p a { color: var(--bf-accent, #333); }
 .bf-home-bottom strong { color: var(--bf-text, #333); }
 .bf-home-cta { display: flex; gap: .75rem; margin-top: 1.5rem; flex-wrap: wrap; }
