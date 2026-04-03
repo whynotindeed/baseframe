@@ -174,6 +174,12 @@ if (!$fwOverride && $active && isset($frameworks[$active->alias])) {
     $fwContext = $fwOverride;
 }
 
+// Random framework on homepage if no ?fw= specified
+if ($isRealHome && !$fwOverride) {
+    $fwKeys = array_keys($frameworks);
+    $fwOverride = $fwKeys[array_rand($fwKeys)];
+}
+
 // Apply URL override if valid
 if ($fwOverride && isset($frameworks[$fwOverride])) {
     $framework = $fwOverride;
@@ -219,9 +225,9 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=3', [], ['defer' => true]);
     <!-- ─── Top bar ──────────────────────────────────────────── -->
     <div class="bf-topbar">
         <div class="bf-container bf-topbar-inner">
-            <a href="https://theaidirector.win" class="bf-topbar-link">TheAIDirector.Win</a>
-            <a href="https://claudejoomla.com" class="bf-topbar-link bf-topbar-active">ClaudeJoomla.com</a>
-            <a href="https://claudetemplates.net" class="bf-topbar-link">ClaudeTemplates.net</a>
+            <a href="https://theaidirector.win" class="bf-topbar-link" title="TheAIDirector.Win">TheAIDirector.Win</a>
+            <a href="https://claudejoomla.com" class="bf-topbar-link bf-topbar-active" title="You are here">ClaudeJoomla.com</a>
+            <a href="https://claudetemplates.net" class="bf-topbar-link" title="ClaudeTemplates.NET">ClaudeTemplates.NET</a>
         </div>
     </div>
 
@@ -364,9 +370,14 @@ $this->addScript($mediaBase . '/js/baseframe.js?v=3', [], ['defer' => true]);
                 <?php endif; ?>
             </div>
             <?php endif; ?>
+            <p class="bf-trademark" style="font-size:.65rem;opacity:.45;margin-bottom:.75rem;line-height:1.5;text-align:center;">This site is not affiliated with or endorsed by The Joomla! Project™. Use of the Joomla!® name, symbol, logo and related trademarks is permitted under a limited license granted by <a href="https://www.opensourcematters.org" target="_blank" style="color:inherit;text-decoration:underline;">Open Source Matters, Inc</a>.</p>
             <div class="bf-footer-bottom">
                 <p>&copy; <?php echo date('Y'); ?> <a href="https://claudejoomla.com" style="color:inherit;text-decoration:none;">ClaudeJoomla.com</a></p>
-                <p>Powered by <a href="https://www.joomla.org" target="_blank">Joomla</a>, <?php if ($fwUrl): ?><a href="<?php echo htmlspecialchars($fwUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></a><?php else: ?><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?><?php endif; ?> &amp; <a href="https://github.com/whynotindeed/baseframe" target="_blank">BaseFrame</a> · <a href="https://weblio.no/?lang=en" style="color:inherit;opacity:.6;text-decoration:none;">weblio.no</a></p>
+                <p>Powered by <a href="https://www.joomla.org" target="_blank">Joomla</a>, <?php if ($fwUrl): ?><a href="<?php echo htmlspecialchars($fwUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank"><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?></a><?php else: ?><?php echo htmlspecialchars($fwLabel, ENT_QUOTES, 'UTF-8'); ?><?php endif; ?> &amp; <a href="https://github.com/whynotindeed/baseframe" target="_blank">BaseFrame</a></p>
+            </div>
+            <div class="bf-footer-brand">
+                <a class="bf-footer-taid" href="https://theaidirector.win" target="_blank">THE <span>AI</span> DIRECTOR</a>
+                <a class="bf-footer-weblio" href="https://weblio.no/?lang=en" target="_blank">WEBLIO<span>.NO</span></a>
             </div>
         </div>
     </footer>

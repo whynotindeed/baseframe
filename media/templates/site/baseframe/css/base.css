@@ -96,7 +96,7 @@ body.bf {
   color: var(--bf-topbar-hover, var(--bf-accent, #666));
 }
 .bf-topbar-active {
-  color: var(--bf-topbar-active, var(--bf-text, #333));
+  color: var(--bf-topbar-active, var(--bf-accent, #333));
   font-weight: 600;
 }
 .bf-logo {
@@ -278,6 +278,49 @@ body.bf {
 .bf-footer-bottom p { margin: 0 !important; }
 @media (max-width: 480px) {
   .bf-footer-bottom { flex-direction: column; align-items: flex-start; gap: .25rem; }
+}
+
+/* ─── Footer brand (The AI Director + weblio.no) ─────────── */
+.bf-footer-brand {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bf-border, rgba(0,0,0,.08));
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.bf-footer-taid {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  color: var(--bf-text-soft, #888) !important;
+  opacity: .5;
+  transition: opacity .2s;
+}
+.bf-footer-taid span {
+  color: var(--bf-accent, #666);
+  opacity: 1;
+}
+.bf-footer-taid:hover {
+  opacity: .8;
+}
+.bf-footer-weblio {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  color: var(--bf-text-soft, #888) !important;
+  opacity: .5;
+  transition: opacity .2s;
+}
+.bf-footer-weblio span {
+  opacity: .6;
+}
+.bf-footer-weblio:hover {
+  opacity: .8;
 }
 
 /* ─── Joomla internals ──────────────────────────────────────── */
