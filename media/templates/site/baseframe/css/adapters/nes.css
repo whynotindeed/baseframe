@@ -20,14 +20,17 @@
   --bf-topbar-active: #92cc41;
 }
 
+body:has(.bf-topbar) { --bf-nav-top: 96px; }
+
 /* ---- NES: show hamburger at 1024px (pixel font is wider) ---- */
 @media (max-width: 1024px) {
   .bf-hamburger { display: flex !important; }
   .bf-nav {
     display: none !important;
-    position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
+    position: fixed; top: var(--bf-nav-top, 68px); left: 0; right: 0;
+    height: calc(100dvh - var(--bf-nav-top, 68px));
     padding: 1.5rem; z-index: 99; overflow-y: auto;
-    background: #212529; border: 4px solid #000;
+    background: #212529; border: 4px solid #000; border-top: none;
   }
   .bf-nav.is-open { display: block !important; }
   .bf-nav .mod-menu { flex-direction: column; width: 100%; }
@@ -209,7 +212,8 @@
 body.bf, .bf-content { color: #e9ecef !important; }
 body.bf p, body.bf li, body.bf small, body.bf span, body.bf time, body.bf a { color: #e9ecef; }
 /* Topbar — override global a color + smaller pixel font */
-.bf-topbar-link, .bf-topbar-active { font-size: .55rem !important; }
+.bf-topbar-link, .bf-topbar-active { font-size: .5rem !important; }
+@media (max-width: 480px) { .bf-topbar-link, .bf-topbar-active { font-size: .4rem !important; } .bf-topbar-inner { gap: .4rem !important; } }
 .bf-topbar-link { color: #6c757d !important; }
 .bf-topbar-link:hover { color: #f7d51d !important; }
 .bf-topbar-active { color: #92cc41 !important; }
