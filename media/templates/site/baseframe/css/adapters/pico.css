@@ -38,7 +38,7 @@ body.bf {
 .bf nav { margin-bottom: 0; justify-content: flex-end; }
 .bf article { margin: 0; padding: 0; }
 .bf section { margin: 0; padding: 0; }
-.bf footer { margin: 0; padding: 0; }
+.bf footer { margin: 0; }
 .bf main { margin: 0; padding: 0; max-width: none; }
 
 /* Pico adds underline+color to all links — tame it for UI elements */
@@ -145,6 +145,8 @@ input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type
 }
 
 /* ---- Hero ---------------------------------------------------------- */
+.bf-home-hero { padding-top: 2rem; }
+
 .bf-hero {
   background: #0172ad;
   color: #fff;

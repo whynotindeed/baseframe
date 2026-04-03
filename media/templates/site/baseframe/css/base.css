@@ -2314,6 +2314,7 @@ label.invalid .form-control-feedback { display: none !important; }
 
 /* Homepage hero styling */
 .bf-home-hero { margin-bottom: 1.5rem; }
+.bf-home-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: .75rem; }
 .bf-home-hero .lead {
   font-size: 1.15rem;
   line-height: 1.7;
@@ -2322,8 +2323,11 @@ label.invalid .form-control-feedback { display: none !important; }
 }
 
 /* Homepage bottom content */
+.bf-home-bottom-wrap { padding-top: 2.5rem; padding-bottom: 1rem; }
 .bf-home-bottom { max-width: 800px; }
+.bf-home-bottom h2 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.75rem; font-weight: 700; color: var(--bf-text, #333); }
 .bf-home-bottom h2:first-child { margin-top: 0; }
+.bf-home-bottom p { margin-bottom: 1rem; line-height: 1.7; color: var(--bf-text-soft, #666); }
 .bf-home-bottom p a { color: var(--bf-accent, #333); }
 .bf-home-bottom strong { color: var(--bf-text, #333); }
 .bf-home-cta { display: flex; gap: .75rem; margin-top: 1.5rem; flex-wrap: wrap; }

@@ -26,7 +26,7 @@
 #kunena nav, nav.mod-breadcrumbs__wrapper { justify-content: flex-start !important; }
 .bf article { margin: 0; padding: 0; }
 .bf section { margin: 0; padding: 0; }
-.bf footer { margin: 0; padding: 0; }
+.bf footer { margin: 0; }
 
 /* MVP button/input resets for input-groups and forms */
 .input-group .btn, .input-group button { margin: 0 !important; padding: .5rem 1rem !important; }
@@ -89,6 +89,8 @@
 }
 
 /* ---- Hero ---------------------------------------------------------- */
+.bf-home-hero { padding-top: 2rem; }
+
 .bf-hero {
   background: #1a1a2e;
   color: #fff;
