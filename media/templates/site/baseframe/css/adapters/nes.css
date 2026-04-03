@@ -248,6 +248,22 @@ td:not(#kunena td), :not(#kunena) > table td, :not(#kunena) > table td * { color
 .com-content-category__table tbody th a { color: #209cee !important; }
 .com-content-category__table tbody th a:hover { color: #000 !important; }
 thead th, thead th * { color: #fff !important; }
+
+/* CTA buttons — NES pixel style */
+.bf-home-cta-primary {
+  background: #92cc41 !important;
+  border: 4px solid #000 !important;
+  border-radius: 0 !important;
+  color: #000 !important;
+}
+.bf-home-cta-primary:hover { background: #f7d51d !important; }
+.bf-home-cta-secondary {
+  background: transparent !important;
+  border: 4px solid #e9ecef !important;
+  border-radius: 0 !important;
+  color: #e9ecef !important;
+}
+.bf-home-cta-secondary:hover { background: #f7d51d !important; color: #000 !important; border-color: #000 !important; }
 /* Footer — dark bg, light text */
 .bf-footer, .bf-footer * { color: rgba(255,255,255,.7) !important; }
 .bf-footer a { color: #92cc41 !important; }

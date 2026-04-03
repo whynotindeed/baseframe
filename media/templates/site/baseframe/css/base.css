@@ -235,12 +235,12 @@ body:has(.bf-topbar) { --bf-nav-top: 92px; }
   .bf-nav.is-open { display: block !important; }
   .bf-nav .mod-menu { flex-direction: column !important; width: 100% !important; }
   .bf-nav .nav-item { display: block !important; width: 100% !important; padding: 0 !important; margin: 0 !important; }
-  .bf-nav .nav-item > a { display: block !important; padding: .75rem 1rem !important; font-size: 1rem !important; width: 100% !important; border-bottom: none !important; color: var(--bf-text, #333) !important; margin: 0 !important; }
+  .bf-nav .nav-item > a { display: block !important; padding: .75rem 1rem !important; font-size: 1rem !important; width: 100% !important; border-bottom: none !important; margin: 0 !important; }
   .bf-nav .mod-menu__toggle-sub { display: block !important; width: 100% !important; text-align: left !important; padding: .75rem 1rem !important; font-size: 1rem !important; border-bottom: none !important; background: none !important; border: none !important; color: inherit !important; }
   .bf-nav .mod-menu__sub { position: static !important; box-shadow: none !important; border: none !important; padding-left: 1rem !important; min-width: auto !important; background: transparent !important; }
   .bf-nav .mod-menu__sub[aria-hidden="true"] { display: none; }
   .bf-nav .mod-menu__sub[aria-hidden="false"] { display: block; }
-  .bf-nav .mod-menu__sub .nav-item > a { display: block !important; padding: .5rem 1rem !important; font-size: .95rem !important; white-space: normal !important; color: var(--bf-text, #333) !important; }
+  .bf-nav .mod-menu__sub .nav-item > a { display: block !important; padding: .5rem 1rem !important; font-size: .95rem !important; white-space: normal !important; }
   .bf-nav .nav-item.deeper.parent { display: block !important; padding: 0 !important; margin: 0 !important; }
 }
 
@@ -2369,7 +2369,11 @@ label.invalid .form-control-feedback { display: none !important; }
 .bf-home-bottom p { margin-bottom: 1rem; line-height: 1.7; color: var(--bf-text-soft, #666); }
 .bf-home-bottom p a { color: var(--bf-accent, #333); }
 .bf-home-bottom strong { color: var(--bf-text, #333); }
-.bf-home-cta { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.bf-home-cta { display: flex; gap: .75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+@media (max-width: 480px) {
+  .bf-home-cta { flex-direction: column; }
+  .bf-home-cta-btn { width: 100%; text-align: center; justify-content: center; }
+}
 .bf-home-cta-btn {
   display: inline-flex; align-items: center; gap: .5rem;
   padding: .85rem 2rem; font-size: .95rem; font-weight: 600;
